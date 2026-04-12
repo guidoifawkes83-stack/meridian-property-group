@@ -1,8 +1,8 @@
 {
-  "featured": "test-property-cammeray",
+  "featured": "42-oceanview-crest-mosman",
   "listings": [
     {
-      "id": "test-property-cammeray",
+      "id": "42-oceanview-crest-mosman",
       "status": "active",
       "badge": "Just Listed",
       "suburb": "Cammeray",
@@ -503,12 +503,12 @@
     }
   ],
   "agent": {
-    "email": "james@meridianpropertygroup.com.au",
-    "phoneDisplay": "(02) 9000 0000",
-    "phone": "+61290000000",
-    "photo": "assets/images/agent-photo.jpg",
+    "name": "James Whitfield",
     "title": "Principal Agent · North Shore Specialist",
-    "name": "James Whitfield"
+    "photo": "assets/images/agent-photo.jpg",
+    "phone": "+61290000000",
+    "phoneDisplay": "(02) 9000 0000",
+    "email": "james@meridianpropertygroup.com.au"
   },
   "office": {
     "name": "Meridian Property Group",
