@@ -330,6 +330,13 @@ function badgeClasses(badge) {
   return 'bg-brand-navy text-white';
 }
 
+// Strip leading slash from CMS image paths for GitHub Pages compatibility
+
+function imgPath(path) {
+  if (!path) return '';
+  return path.startsWith('/') ? path.slice(1) : path;
+}
+
 // ─── BOOT ─────────────────────────────────────────────────────
 const params = new URLSearchParams(window.location.search);
 const LISTING_ID = params.get('id');
@@ -413,7 +420,7 @@ function setContent(id, val) { const el = document.getElementById(id); if(el) el
 // ─── HERO ─────────────────────────────────────────────────────
 function renderHero(l) {
   const img = document.getElementById('hero-img');
-  img.src = l.hero; img.alt = `${l.address} ${l.suburb} — luxury residence`;
+  img.src = imgPath(l.hero); img.alt = `${l.address} ${l.suburb} — luxury residence`;
 
   const badge = document.getElementById('hero-badge');
   badge.textContent = l.badge || '';
@@ -441,7 +448,7 @@ function renderHero(l) {
 let galleryImages = [], currentLightbox = 0;
 
 function renderGallery(l) {
-  galleryImages = l.images || [l.hero];
+  galleryImages = (l.images || [l.hero]).map(imgPath);
   const grid = document.getElementById('gallery-grid');
   if (!galleryImages.length) { grid.parentElement.style.display = 'none'; return; }
 
@@ -576,7 +583,7 @@ function renderAgent(agent) {
   document.getElementById('agent-card').innerHTML = `
     <p class="section-label mb-4">Your Agent</p>
     <div class="flex items-center gap-4 mb-5">
-      <img src="${agent.photo}" alt="${agent.name}" class="w-16 h-16 rounded-full object-cover object-top flex-shrink-0 border-2 border-brand-gold/20" onerror="this.style.background='#e8e3de'"/>
+      <img src="${imgPath(agent.photo)}" alt="${agent.name}" class="w-16 h-16 rounded-full object-cover object-top flex-shrink-0 border-2 border-brand-gold/20" onerror="this.style.background='#e8e3de'"/>
       <div>
         <p class="font-serif text-brand-navy text-lg">${agent.name}</p>
         <p class="text-xs font-sans text-on-surface-variant">${agent.title}</p>
@@ -636,7 +643,7 @@ function renderSimilar(others) {
     <article class="similar-card bg-white rounded-lg overflow-hidden reveal" style="transition-delay:${i*.1}s">
       <a href="listing.html?id=${l.id}">
         <div class="aspect-video overflow-hidden">
-          <img class="w-full h-full object-cover" src="${l.cardImage}" alt="${l.address}" onerror="this.style.background='#e8e3de'"/>
+          <img class="w-full h-full object-cover" src="${imgPath(l.cardImage)}" alt="${l.address}" onerror="this.style.background='#e8e3de'"/>
         </div>
         <div class="p-6">
           <p class="section-label mb-2">${l.suburb}</p>

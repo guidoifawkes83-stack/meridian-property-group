@@ -400,6 +400,12 @@ function init() {
   renderPropertySpecs();
 }
 
+// Strip leading slash from CMS image paths for GitHub Pages compatibility
+function imgPath(path) {
+  if (!path) return '';
+  return path.startsWith('/') ? path.slice(1) : path;
+}
+
 // ─── BADGE COLOURS ───────────────────────────────────────────
 function badgeClasses(badge) {
   if (!badge) return '';
@@ -419,7 +425,7 @@ function renderActiveListings() {
     <article class="property-card bg-white rounded-lg overflow-hidden reveal" style="transition-delay:${i*.1}s">
       <a href="listing.html?id=${l.id}">
         <div class="aspect-[4/5] overflow-hidden relative">
-          <img class="card-img w-full h-full object-cover" alt="${l.beds} bed ${l.suburb}" src="${l.cardImage}" onerror="this.style.background='#e8e3de'"/>
+          <img class="card-img w-full h-full object-cover" alt="${l.beds} bed ${l.suburb}" src="${imgPath(l.cardImage)}" onerror="this.style.background='#e8e3de'"/>
           <div class="card-overlay absolute inset-0 bg-gradient-to-t from-brand-navy/70 to-transparent flex items-end p-6">
             <button class="bg-brand-gold text-brand-navy text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wide">View Property</button>
           </div>
