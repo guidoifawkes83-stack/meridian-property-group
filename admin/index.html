@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex"/> <!-- keep admin out of search results -->
+  <title>Meridian Admin</title>
+
+  <style>
+    /* Branded loading screen shown before CMS JS loads */
+    body {
+      margin: 0;
+      background: #1B2A4A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: 'Georgia', serif;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .loading-logo {
+      color: #C9A84C;
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+    }
+    .loading-sub {
+      color: rgba(255,255,255,0.4);
+      font-family: sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .loading-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #C9A84C;
+      display: inline-block;
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+    .loading-dot:nth-child(2) { animation-delay: 0.2s; }
+    .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes pulse {
+      0%, 80%, 100% { opacity: 0.2; transform: scale(0.8); }
+      40% { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="loading-logo">Meridian</div>
+  <div class="loading-sub">Property Management</div>
+  <div style="display:flex;gap:6px;margin-top:8px">
+    <span class="loading-dot"></span>
+    <span class="loading-dot"></span>
+    <span class="loading-dot"></span>
+  </div>
+
+  <!-- Sveltia CMS — modern successor to Decap/Netlify CMS -->
+  <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js" type="module"></script>
+</body>
+</html>
