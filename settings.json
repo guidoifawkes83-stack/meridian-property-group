@@ -1,0 +1,18 @@
+{
+  "featured": "12-kurraba-road-neutral-bay",
+  "agent": {
+    "name": "James Whitfield",
+    "title": "Principal Agent · North Shore Specialist",
+    "photo": "assets/images/agent-photo.jpg",
+    "phone": "+61290000000",
+    "phoneDisplay": "(02) 9000 0000",
+    "email": "james@meridianpropertygroup.com.au"
+  },
+  "office": {
+    "name": "Meridian Property Group",
+    "address": "124 Military Road, Neutral Bay NSW 2089",
+    "phone": "(02) 9000 0000",
+    "email": "hello@meridianpropertygroup.com.au",
+    "tallyFormId": "FORM_ID"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "22-telegraph-road-pymble",
+  "status": "active",
+  "badge": "Price on Application",
+  "suburb": "Pymble",
+  "address": "22 Telegraph Road",
+  "beds": 6,
+  "baths": 5,
+  "cars": 4,
+  "land": 1850,
+  "house": 680,
+  "yearBuilt": 2021,
+  "aspect": "North",
+  "councilRates": "$5,200 / year",
+  "price": "Contact Agent",
+  "priceRaw": null,
+  "hero": "assets/images/listings/telegraph-hero.jpg",
+  "cardImage": "assets/images/listing-pymble.jpg",
+  "images": [
+    "assets/images/listings/telegraph-hero.jpg",
+    "assets/images/listings/telegraph-interior-1.jpg",
+    "assets/images/listings/telegraph-interior-2.jpg",
+    "assets/images/listings/telegraph-interior-3.jpg",
+    "assets/images/listings/telegraph-pool.jpg"
+  ],
+  "description": [
+    "Set on a magnificent 1,850sqm north-facing block, 22 Telegraph Road is one of Pymble's finest contemporary estates — a home of extraordinary scale and quality, built for multi-generational family living.",
+    "The bespoke residence was completed in 2021 and showcases the finest in Australian architectural design. Soaring ceilings, floor-to-ceiling glazing, and seamless indoor-outdoor integration define an interior that feels both expansive and intimate.",
+    "The entertainer's domain is unrivalled — a vast kitchen with twin islands, a butler's pantry, and direct access to the resort-style pool terrace and landscaped gardens. A dedicated media room, games room, and wine cellar complete the ground floor.",
+    "Six bedrooms, each with built-in storage, are arranged across two wings. The master suite is a true retreat with dual walk-in robes, a spa bath, and a private garden courtyard. A four-car garage with workshop space and separate teen retreat complete this extraordinary offering."
+  ],
+  "features": [
+    "1,850sqm north-facing block",
+    "Resort-style heated pool and cabana",
+    "Twin-island kitchen with butler's pantry",
+    "Media room, games room, wine cellar",
+    "Master suite with spa bath and courtyard",
+    "6 bedrooms, 5 bathrooms",
+    "Four-car garage with workshop",
+    "Separate teen retreat / granny flat",
+    "Full home automation (Crestron)",
+    "Moments to Pymble station and GPS"
+  ],
+  "inspections": [
+    "Saturday 19 Apr · 12:00 – 12:30pm",
+    "Sunday 20 Apr · 12:00 – 12:30pm",
+    "Saturday 26 Apr · 12:00 – 12:30pm"
+  ],
+  "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.2!2d151.140!3d-33.744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDQ0JzM4LjQiUyAxNTHCsDA4JzI0LjAiRQ!5e0!3m2!1sen!2sau!4v1",
+  "nearby": [
+    { "name": "Pymble Station", "distance": "600m", "icon": "train" },
+    { "name": "Pymble Ladies College", "distance": "400m", "icon": "school" },
+    { "name": "Gordon Village", "distance": "1.5km", "icon": "storefront" }
+  ],
+  "floorPlan": [
+    { "name": "Master Suite", "area": "55 sqm", "features": "Dual Walk-ins · Spa Bath · Courtyard", "left": "0%", "top": "0%", "width": "38%", "height": "45%" },
+    { "name": "Bed 2", "area": "24 sqm", "features": "Built-in Robes · Ensuite", "left": "40%", "top": "0%", "width": "28%", "height": "45%" },
+    { "name": "Bed 3", "area": "22 sqm", "features": "Built-in Robes", "left": "70%", "top": "0%", "width": "30%", "height": "45%" },
+    { "name": "Living & Dining", "area": "90 sqm", "features": "Pool Views · Opens to Terrace", "left": "0%", "top": "47%", "width": "45%", "height": "53%" },
+    { "name": "Kitchen", "area": "45 sqm", "features": "Twin Islands · Butler's Pantry", "left": "47%", "top": "47%", "width": "53%", "height": "33%" },
+    { "name": "Media Room", "area": "28 sqm", "features": "Acoustic Insulation", "left": "47%", "top": "82%", "width": "30%", "height": "18%" },
+    { "name": "Wine Cellar", "area": "12 sqm", "features": "Climate Controlled", "left": "79%", "top": "82%", "width": "21%", "height": "18%" }
+  ]
+}

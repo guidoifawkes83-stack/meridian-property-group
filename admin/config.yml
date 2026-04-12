@@ -1,5 +1,6 @@
 # ─────────────────────────────────────────────────────────────
 #  Meridian Property Group — Sveltia CMS Configuration
+#  Each listing is its own file — clean sidebar navigation
 # ─────────────────────────────────────────────────────────────
 
 backend:
@@ -19,295 +20,251 @@ output:
 
 collections:
 
-  # ── 1. LISTINGS ─────────────────────────────────────────────
+  # ── 1. LISTINGS — each listing is its own sidebar entry ─────
   - name: listings
     label: "🏠 Property Listings"
+    label_singular: "Property"
+    description: "Each property is a separate entry. Click one to edit it, or click New Property to add one."
+    folder: listings
+    extension: json
+    format: json
+    create: true
+    delete: true
+    identifier_field: id
+    slug: "{{id}}"
+    summary: "{{address}}, {{suburb}} — {{price}} ({{status}})"
+    fields:
+
+      - label: "Listing ID"
+        name: id
+        widget: string
+        hint: "URL-safe ID used in the listing page URL. Lowercase letters and hyphens only. e.g. 5-harbour-view-mosman"
+        pattern: ['^[a-z0-9-]+$', "Lowercase letters, numbers and hyphens only"]
+
+      - label: Status
+        name: status
+        widget: select
+        options:
+          - { label: "✅ Active — visible on site", value: active }
+          - { label: "🔴 Sold — shown in Recently Sold row", value: sold }
+          - { label: "🚫 Unlisted — hidden from site", value: unlisted }
+        default: active
+
+      - label: Badge
+        name: badge
+        widget: select
+        hint: "Label shown on the property card."
+        options:
+          - { label: "Just Listed", value: "Just Listed" }
+          - { label: "Exclusive", value: "Exclusive" }
+          - { label: "For Sale", value: "For Sale" }
+          - { label: "Price on Application", value: "Price on Application" }
+          - { label: "Under Offer", value: "Under Offer" }
+          - { label: "Auction", value: "Auction" }
+          - { label: "Sold", value: "Sold" }
+        default: "For Sale"
+
+      - label: Suburb
+        name: suburb
+        widget: string
+        hint: "e.g. Mosman"
+
+      - label: "Street Address"
+        name: address
+        widget: string
+        hint: "e.g. 42 Oceanview Crest"
+
+      - label: Bedrooms
+        name: beds
+        widget: number
+        value_type: int
+        min: 1
+        max: 20
+
+      - label: Bathrooms
+        name: baths
+        widget: number
+        value_type: int
+        min: 1
+        max: 20
+
+      - label: "Car Spaces"
+        name: cars
+        widget: number
+        value_type: int
+        min: 0
+        max: 20
+
+      - label: "Land Area (sqm)"
+        name: land
+        widget: number
+        value_type: int
+        min: 0
+
+      - label: "House Area (sqm)"
+        name: house
+        widget: number
+        value_type: int
+        min: 0
+
+      - label: "Year Built"
+        name: yearBuilt
+        widget: number
+        value_type: int
+        min: 1800
+        max: 2030
+
+      - label: Aspect
+        name: aspect
+        widget: string
+        hint: "e.g. North-East, Harbour Views"
+
+      - label: "Council Rates"
+        name: councilRates
+        widget: string
+        hint: "e.g. $4,800 / year"
+
+      - label: "Display Price"
+        name: price
+        widget: string
+        hint: "Shown on site exactly as typed. e.g. $12,500,000 or Contact Agent"
+
+      - label: "Price (number only, for SEO schema)"
+        name: priceRaw
+        widget: number
+        value_type: float
+        required: false
+        hint: "Numbers only, no $ sign. e.g. 12500000. Leave blank for Contact Agent."
+
+      - label: "Hero Image"
+        name: hero
+        widget: image
+        hint: "Main large image at the top of the listing page. Landscape, min 1400px wide recommended."
+
+      - label: "Card Image"
+        name: cardImage
+        widget: image
+        hint: "Image shown on the homepage listing card. Can be the same as the hero image."
+
+      - label: "Photo Gallery"
+        name: images
+        widget: list
+        label_singular: Photo
+        hint: "All photos for this property. First photo appears as the main gallery image."
+        field:
+          label: Photo
+          name: image
+          widget: image
+
+      - label: Description
+        name: description
+        widget: list
+        label_singular: Paragraph
+        hint: "Property description — each item is one paragraph. Write 3–5 paragraphs."
+        field:
+          label: Paragraph
+          name: paragraph
+          widget: text
+
+      - label: "Features & Inclusions"
+        name: features
+        widget: list
+        label_singular: Feature
+        hint: "One feature per line. e.g. Heated swimming pool"
+        field:
+          label: Feature
+          name: feature
+          widget: string
+
+      - label: "Open for Inspection Dates"
+        name: inspections
+        widget: list
+        label_singular: Inspection
+        hint: "e.g. Saturday 19 Apr · 10:00 – 10:30am"
+        field:
+          label: "Date & Time"
+          name: datetime
+          widget: string
+
+      - label: "Google Maps Embed URL"
+        name: mapEmbed
+        widget: string
+        required: false
+        hint: "Go to Google Maps → Share → Embed a map → copy only the src=... URL value"
+
+      - label: "Nearby Landmarks"
+        name: nearby
+        widget: list
+        label_singular: Landmark
+        hint: "Up to 3 nearby points of interest."
+        fields:
+          - { label: Name, name: name, widget: string, hint: "e.g. Balmoral Beach" }
+          - { label: Distance, name: distance, widget: string, hint: "e.g. 1.2km" }
+          - label: Icon
+            name: icon
+            widget: select
+            options:
+              - { label: "🏖️ Beach", value: beach_access }
+              - { label: "🚂 Train Station", value: train }
+              - { label: "⛴️ Ferry Wharf", value: directions_boat }
+              - { label: "🏫 School", value: school }
+              - { label: "🏪 Shopping / Village", value: storefront }
+              - { label: "🏢 CBD / Business", value: business }
+              - { label: "🌳 Park / Reserve", value: park }
+              - { label: "🏋️ Gym / Fitness", value: fitness_center }
+              - { label: "🍽️ Restaurant", value: restaurant }
+              - { label: "🏥 Hospital", value: local_hospital }
+
+      - label: "Floor Plan Rooms"
+        name: floorPlan
+        widget: list
+        label_singular: Room
+        hint: "Define rooms for the interactive floor plan. Positions are % of the floor plan container."
+        fields:
+          - { label: "Room Name", name: name, widget: string, hint: "e.g. Master Suite" }
+          - { label: Area, name: area, widget: string, hint: "e.g. 48 sqm" }
+          - { label: Features, name: features, widget: string, hint: "e.g. Ensuite · Walk-in Robe" }
+          - { label: "Left (%)", name: left, widget: string, hint: "e.g. 0%" }
+          - { label: "Top (%)", name: top, widget: string, hint: "e.g. 0%" }
+          - { label: "Width (%)", name: width, widget: string, hint: "e.g. 42%" }
+          - { label: "Height (%)", name: height, widget: string, hint: "e.g. 45%" }
+
+  # ── 2. SITE SETTINGS ────────────────────────────────────────
+  - name: settings
+    label: "⚙️ Site Settings"
     files:
-      - label: "All Listings"
-        name: all_listings
-        file: listings.json
+
+      - label: "Featured Property & Agent"
+        name: settings
+        file: settings.json
         fields:
 
           - label: "Featured Listing ID"
             name: featured
             widget: string
-            hint: "ID of the listing to feature on the homepage. e.g. 42-oceanview-crest-mosman"
+            hint: "The ID of the listing shown in the homepage carousel. Must match a listing ID exactly."
 
-          - label: Listings
-            name: listings
-            widget: list
-            label_singular: Property
-            summary: "{{fields.address}}, {{fields.suburb}} — {{fields.status}}"
-            fields:
-
-              - label: "Listing ID"
-                name: id
-                widget: string
-                hint: "Lowercase, hyphens only. e.g. 42-oceanview-crest-mosman"
-
-              - label: Status
-                name: status
-                widget: select
-                options:
-                  - { label: "✅ Active — visible on site", value: active }
-                  - { label: "🔴 Sold — shown in Recently Sold row", value: sold }
-                  - { label: "🚫 Unlisted — hidden from site", value: unlisted }
-                default: active
-
-              - label: Badge
-                name: badge
-                widget: select
-                options:
-                  - { label: "Just Listed", value: "Just Listed" }
-                  - { label: "Exclusive", value: "Exclusive" }
-                  - { label: "For Sale", value: "For Sale" }
-                  - { label: "Price on Application", value: "Price on Application" }
-                  - { label: "Sold", value: "Sold" }
-                  - { label: "Under Offer", value: "Under Offer" }
-                  - { label: "Auction", value: "Auction" }
-                default: "For Sale"
-
-              - label: Suburb
-                name: suburb
-                widget: string
-
-              - label: Address
-                name: address
-                widget: string
-                hint: "Street address only, e.g. 42 Oceanview Crest"
-
-              - label: Bedrooms
-                name: beds
-                widget: number
-                value_type: int
-                min: 1
-
-              - label: Bathrooms
-                name: baths
-                widget: number
-                value_type: int
-                min: 1
-
-              - label: "Car Spaces"
-                name: cars
-                widget: number
-                value_type: int
-                min: 0
-
-              - label: "Land Area (sqm)"
-                name: land
-                widget: number
-                value_type: int
-                min: 0
-
-              - label: "House Area (sqm)"
-                name: house
-                widget: number
-                value_type: int
-                min: 0
-
-              - label: "Year Built"
-                name: yearBuilt
-                widget: number
-                value_type: int
-
-              - label: Aspect
-                name: aspect
-                widget: string
-                hint: "e.g. North-East, Harbour Views"
-
-              - label: "Council Rates"
-                name: councilRates
-                widget: string
-                hint: "e.g. $4,800 / year"
-
-              - label: "Display Price"
-                name: price
-                widget: string
-                hint: "e.g. $12,500,000 or Contact Agent"
-
-              - label: "Price (number only)"
-                name: priceRaw
-                widget: number
-                value_type: float
-                required: false
-                hint: "Numeric only, e.g. 12500000. Leave blank for Contact Agent."
-
-              - label: "Hero Image"
-                name: hero
-                widget: image
-                hint: "Main image on the listing page."
-
-              - label: "Card Image"
-                name: cardImage
-                widget: image
-                hint: "Image shown on the homepage card."
-
-              - label: "Photo Gallery"
-                name: images
-                widget: list
-                label_singular: Photo
-                field:
-                  label: Photo
-                  name: image
-                  widget: image
-
-              - label: Description
-                name: description
-                widget: list
-                label_singular: Paragraph
-                hint: "Each item is one paragraph."
-                field:
-                  label: Paragraph
-                  name: paragraph
-                  widget: text
-
-              - label: "Features & Inclusions"
-                name: features
-                widget: list
-                label_singular: Feature
-                field:
-                  label: Feature
-                  name: feature
-                  widget: string
-
-              - label: "Open for Inspection Dates"
-                name: inspections
-                widget: list
-                label_singular: Inspection
-                hint: "e.g. Saturday 19 Apr · 10:00 – 10:30am"
-                field:
-                  label: "Date & Time"
-                  name: datetime
-                  widget: string
-
-              - label: "Google Maps Embed URL"
-                name: mapEmbed
-                widget: string
-                required: false
-                hint: "Paste the src URL from Google Maps embed code."
-
-              - label: "Nearby Landmarks"
-                name: nearby
-                widget: list
-                label_singular: Landmark
-                fields:
-                  - label: Name
-                    name: name
-                    widget: string
-                  - label: Distance
-                    name: distance
-                    widget: string
-                    hint: "e.g. 1.2km"
-                  - label: Icon
-                    name: icon
-                    widget: select
-                    options:
-                      - { label: "Beach", value: beach_access }
-                      - { label: "Train Station", value: train }
-                      - { label: "Ferry Wharf", value: directions_boat }
-                      - { label: "School", value: school }
-                      - { label: "Shopping", value: storefront }
-                      - { label: "CBD / Business", value: business }
-                      - { label: "Park / Reserve", value: park }
-                      - { label: "Gym / Fitness", value: fitness_center }
-                      - { label: "Restaurant", value: restaurant }
-                      - { label: "Hospital", value: local_hospital }
-
-              - label: "Floor Plan Rooms"
-                name: floorPlan
-                widget: list
-                label_singular: Room
-                fields:
-                  - label: "Room Name"
-                    name: name
-                    widget: string
-                  - label: Area
-                    name: area
-                    widget: string
-                    hint: "e.g. 48 sqm"
-                  - label: Features
-                    name: features
-                    widget: string
-                  - label: "Left (%)"
-                    name: left
-                    widget: string
-                    hint: "e.g. 0%"
-                  - label: "Top (%)"
-                    name: top
-                    widget: string
-                    hint: "e.g. 0%"
-                  - label: "Width (%)"
-                    name: width
-                    widget: string
-                    hint: "e.g. 42%"
-                  - label: "Height (%)"
-                    name: height
-                    widget: string
-                    hint: "e.g. 45%"
-
-  # ── 2. AGENT ────────────────────────────────────────────────
-  - name: agent
-    label: "👤 Agent Details"
-    files:
-      - label: Agent
-        name: agent
-        file: listings.json
-        fields:
           - label: Agent
             name: agent
             widget: object
             fields:
-              - label: "Full Name"
-                name: name
-                widget: string
-              - label: Title
-                name: title
-                widget: string
-                hint: "e.g. Principal Agent · North Shore Specialist"
+              - { label: "Full Name", name: name, widget: string }
+              - { label: Title, name: title, widget: string, hint: "e.g. Principal Agent · North Shore Specialist" }
               - label: Photo
                 name: photo
                 widget: image
                 media_folder: assets/images
                 public_folder: assets/images
-              - label: "Phone (for tel: link)"
-                name: phone
-                widget: string
-                hint: "No spaces, e.g. +61290000000"
-              - label: "Phone (display)"
-                name: phoneDisplay
-                widget: string
-                hint: "e.g. (02) 9000 0000"
-              - label: Email
-                name: email
-                widget: string
+              - { label: "Phone (for tel: link)", name: phone, widget: string, hint: "No spaces. e.g. +61290000000" }
+              - { label: "Phone (display)", name: phoneDisplay, widget: string, hint: "e.g. (02) 9000 0000" }
+              - { label: Email, name: email, widget: string }
 
-  # ── 3. OFFICE ───────────────────────────────────────────────
-  - name: office
-    label: "🏢 Office Details"
-    files:
-      - label: Office
-        name: office
-        file: listings.json
-        fields:
           - label: Office
             name: office
             widget: object
             fields:
-              - label: "Agency Name"
-                name: name
-                widget: string
-              - label: Address
-                name: address
-                widget: string
-              - label: Phone
-                name: phone
-                widget: string
-              - label: Email
-                name: email
-                widget: string
-              - label: "Tally Form ID"
-                name: tallyFormId
-                widget: string
-                required: false
-                hint: "Your Tally.so form ID. Replace FORM_ID once your form is built."
+              - { label: "Agency Name", name: name, widget: string }
+              - { label: Address, name: address, widget: string }
+              - { label: Phone, name: phone, widget: string }
+              - { label: Email, name: email, widget: string }
+              - { label: "Tally Form ID", name: tallyFormId, widget: string, required: false, hint: "Your Tally.so form ID. Replace FORM_ID once your form is built." }

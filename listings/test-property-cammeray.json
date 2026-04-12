@@ -1,0 +1,57 @@
+{
+  "id": "test-property-cammeray",
+  "status": "active",
+  "badge": "Just Listed",
+  "suburb": "Cammeray",
+  "address": "8 Rangers Road",
+  "beds": 4,
+  "baths": 3,
+  "cars": 2,
+  "land": 620,
+  "house": 520,
+  "yearBuilt": 2019,
+  "aspect": "North-East, Harbour Views",
+  "councilRates": "$4,800 / year",
+  "price": "$3,200,000",
+  "priceRaw": 3200000,
+  "hero": "assets/images/listings/cammeray-exterior.jpg",
+  "cardImage": "assets/images/listings/cammeray-exterior.jpg",
+  "images": [
+    "assets/images/listings/cammeray-exterior.jpg"
+  ],
+  "description": [
+    "A stunning four-bedroom residence in one of Cammeray's most sought-after streets, offering exceptional proportions and effortless indoor-outdoor living.",
+    "Positioned on a north-east facing block, this beautifully presented home captures natural light throughout the day with generous living spaces that flow seamlessly to an entertainer's terrace.",
+    "The kitchen is the heart of the home — stone benchtops, quality appliances, and direct access to the alfresco dining area make this the perfect space for families and entertainers alike.",
+    "Four bedrooms, three bathrooms, and a double garage complete this outstanding offering in a blue-chip Cammeray location moments from village shops, cafes, and transport."
+  ],
+  "features": [
+    "North-east facing aspect",
+    "Entertainer's terrace",
+    "Stone kitchen benchtops",
+    "4 bedrooms, 3 bathrooms",
+    "Double garage with internal access",
+    "Ducted air conditioning",
+    "Moments to Cammeray village",
+    "Easy access to CBD"
+  ],
+  "inspections": [
+    "Saturday 19 Apr · 10:00 – 10:30am",
+    "Wednesday 23 Apr · 5:00 – 5:30pm",
+    "Saturday 26 Apr · 10:00 – 10:30am"
+  ],
+  "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3314.0!2d151.213!3d-33.831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDQ5JzUxLjYiUyAxNTHCsDEyJzQ2LjgiRQ!5e0!3m2!1sen!2sau!4v1",
+  "nearby": [
+    { "name": "Cammeray Village", "distance": "400m", "icon": "storefront" },
+    { "name": "Tunks Park", "distance": "600m", "icon": "park" },
+    { "name": "North Sydney CBD", "distance": "2.5km", "icon": "business" }
+  ],
+  "floorPlan": [
+    { "name": "Master Suite", "area": "38 sqm", "features": "Ensuite · Walk-in Robe", "left": "0%", "top": "0%", "width": "45%", "height": "45%" },
+    { "name": "Bedroom 2", "area": "20 sqm", "features": "Built-in Robes", "left": "47%", "top": "0%", "width": "30%", "height": "45%" },
+    { "name": "Bedroom 3", "area": "18 sqm", "features": "Built-in Robes", "left": "79%", "top": "0%", "width": "21%", "height": "45%" },
+    { "name": "Living & Dining", "area": "55 sqm", "features": "Opens to Terrace", "left": "0%", "top": "47%", "width": "55%", "height": "53%" },
+    { "name": "Kitchen", "area": "25 sqm", "features": "Stone Benchtops", "left": "57%", "top": "47%", "width": "43%", "height": "30%" },
+    { "name": "Study", "area": "10 sqm", "features": "Garden Views", "left": "57%", "top": "79%", "width": "43%", "height": "21%" }
+  ]
+}

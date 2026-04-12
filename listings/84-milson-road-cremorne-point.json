@@ -1,0 +1,62 @@
+{
+  "id": "84-milson-road-cremorne-point",
+  "status": "active",
+  "badge": "Exclusive",
+  "suburb": "Cremorne Point",
+  "address": "84 Milson Road",
+  "beds": 4,
+  "baths": 3,
+  "cars": 2,
+  "land": 480,
+  "house": 390,
+  "yearBuilt": 2015,
+  "aspect": "East, Harbour Views",
+  "councilRates": "$3,900 / year",
+  "price": "$6,200,000",
+  "priceRaw": 6200000,
+  "hero": "assets/images/listings/milson-hero.jpg",
+  "cardImage": "assets/images/listing-cremorne.jpg",
+  "images": [
+    "assets/images/listings/milson-hero.jpg",
+    "assets/images/listings/milson-interior-1.jpg",
+    "assets/images/listings/milson-interior-2.jpg",
+    "assets/images/listings/milson-interior-3.jpg",
+    "assets/images/listings/milson-garden.jpg"
+  ],
+  "description": [
+    "Perched on the iconic Cremorne Point peninsula, 84 Milson Road is a rare opportunity to secure a beautifully proportioned four-bedroom home with uninterrupted harbour views.",
+    "The residence sits in one of Sydney's most tightly-held pockets — Cremorne Point is a car-free peninsula connected to the city by ferry, offering a village pace without sacrificing urban access.",
+    "Interiors have been thoughtfully updated whilst retaining the character of the original architecture. Generous living spaces flow to a north-facing terrace that frames the harbour and city skyline in spectacular fashion.",
+    "Four bedrooms, a study, and three bathrooms are arranged across two levels, with the master suite commanding the top floor for maximum privacy and views. A double garage and private garden complete this exceptional offering."
+  ],
+  "features": [
+    "Uninterrupted harbour and city skyline views",
+    "North-facing entertainer's terrace",
+    "Renovated kitchen with European appliances",
+    "Master suite occupying entire top floor",
+    "4 bedrooms, 3 bathrooms, study",
+    "Double lock-up garage",
+    "Private landscaped garden",
+    "Ferry to CBD in 12 minutes",
+    "Walk to Cremorne Point Reserve",
+    "Rare car-free peninsula lifestyle"
+  ],
+  "inspections": [
+    "Saturday 19 Apr · 1:00 – 1:30pm",
+    "Wednesday 23 Apr · 4:30 – 5:00pm",
+    "Saturday 26 Apr · 1:00 – 1:30pm"
+  ],
+  "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3314.5!2d151.228!3d-33.840!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDUwJzI0LjAiUyAxNTHCsDEzJzQwLjgiRQ!5e0!3m2!1sen!2sau!4v1",
+  "nearby": [
+    { "name": "Cremorne Point Wharf", "distance": "200m", "icon": "directions_boat" },
+    { "name": "Cremorne Point Reserve", "distance": "300m", "icon": "park" },
+    { "name": "Cremorne Village", "distance": "1.1km", "icon": "storefront" }
+  ],
+  "floorPlan": [
+    { "name": "Master Suite", "area": "38 sqm", "features": "Ensuite · Harbour Views · Private Level", "left": "0%", "top": "0%", "width": "60%", "height": "50%" },
+    { "name": "Study", "area": "10 sqm", "features": "Garden Views", "left": "62%", "top": "0%", "width": "38%", "height": "50%" },
+    { "name": "Living", "area": "55 sqm", "features": "Opens to Terrace · Harbour Views", "left": "0%", "top": "52%", "width": "50%", "height": "48%" },
+    { "name": "Kitchen", "area": "22 sqm", "features": "European Appliances", "left": "52%", "top": "52%", "width": "48%", "height": "28%" },
+    { "name": "Bedroom 2", "area": "18 sqm", "features": "Built-in Robes", "left": "52%", "top": "82%", "width": "48%", "height": "18%" }
+  ]
+}

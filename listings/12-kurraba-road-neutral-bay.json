@@ -1,0 +1,63 @@
+{
+  "id": "12-kurraba-road-neutral-bay",
+  "status": "active",
+  "badge": "Just Listed",
+  "suburb": "Neutral Bay",
+  "address": "12 Kurraba Road",
+  "beds": 5,
+  "baths": 4,
+  "cars": 3,
+  "land": 540,
+  "house": 460,
+  "yearBuilt": 2017,
+  "aspect": "North, Harbour Views",
+  "councilRates": "$4,200 / year",
+  "price": "$8,450,000",
+  "priceRaw": 8450000,
+  "hero": "assets/images/listings/kurraba-hero.jpg",
+  "cardImage": "assets/images/listing-neutral-bay.jpg",
+  "images": [
+    "assets/images/listings/kurraba-hero.jpg",
+    "assets/images/listings/kurraba-interior-1.jpg",
+    "assets/images/listings/kurraba-interior-2.jpg",
+    "assets/images/listings/kurraba-interior-3.jpg",
+    "assets/images/listings/kurraba-pool.jpg"
+  ],
+  "description": [
+    "A rare offering in one of Neutral Bay's most coveted streets — 12 Kurraba Road delivers harbour views, exceptional proportions, and effortless indoor-outdoor living.",
+    "Positioned on a north-facing block, this five-bedroom residence has been meticulously designed to capture natural light throughout the day. The interiors are both grand in scale and warm in character, with timber flooring, high ceilings, and bespoke joinery throughout.",
+    "The kitchen forms the heart of the home — a stunning space with stone island bench, integrated appliances, and a walk-in pantry. It opens to the alfresco dining area and pool terrace, creating a seamless flow perfect for entertaining.",
+    "Three of the five bedrooms enjoy harbour glimpses, with the master suite offering a private balcony, walk-in robe, and hotel-quality ensuite. Triple garage, ducted air conditioning, and smart home system complete the picture."
+  ],
+  "features": [
+    "North-facing with harbour views",
+    "Heated saltwater pool and terrace",
+    "Chef's kitchen with stone island bench",
+    "Master suite with private balcony",
+    "5 bedrooms, 4 bathrooms",
+    "Triple garage with internal access",
+    "Ducted reverse-cycle air conditioning",
+    "Smart home system",
+    "Landscaped gardens by award-winning designer",
+    "Moments to Kurraba Point ferry wharf"
+  ],
+  "inspections": [
+    "Saturday 19 Apr · 11:00 – 11:30am",
+    "Wednesday 23 Apr · 5:30 – 6:00pm",
+    "Saturday 26 Apr · 11:00 – 11:30am"
+  ],
+  "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3314.2!2d151.224!3d-33.834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDUwJzAyLjQiUyAxNTHCsDEzJzI2LjQiRQ!5e0!3m2!1sen!2sau!4v1",
+  "nearby": [
+    { "name": "Kurraba Point Wharf", "distance": "400m", "icon": "directions_boat" },
+    { "name": "Neutral Bay Village", "distance": "900m", "icon": "storefront" },
+    { "name": "North Sydney CBD", "distance": "2.1km", "icon": "business" }
+  ],
+  "floorPlan": [
+    { "name": "Master Suite", "area": "42 sqm", "features": "Ensuite · Walk-in Robe · Balcony", "left": "0%", "top": "0%", "width": "45%", "height": "45%" },
+    { "name": "Bedroom 2", "area": "20 sqm", "features": "Built-in Robes · Harbour Views", "left": "47%", "top": "0%", "width": "30%", "height": "45%" },
+    { "name": "Bedroom 3", "area": "18 sqm", "features": "Built-in Robes", "left": "79%", "top": "0%", "width": "21%", "height": "45%" },
+    { "name": "Living & Dining", "area": "68 sqm", "features": "Opens to Pool Terrace", "left": "0%", "top": "47%", "width": "58%", "height": "53%" },
+    { "name": "Kitchen", "area": "30 sqm", "features": "Stone Bench · Walk-in Pantry", "left": "60%", "top": "47%", "width": "40%", "height": "32%" },
+    { "name": "Study", "area": "12 sqm", "features": "Garden Views", "left": "60%", "top": "81%", "width": "40%", "height": "19%" }
+  ]
+}
