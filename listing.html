@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Dynamic SEO — populated by JS -->
+<title>Loading… | Meridian Property Group</title>
+<meta name="description" content=""/>
+<meta name="robots" content="index, follow"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Meridian Property Group"/>
+<meta property="og:locale" content="en_AU"/>
+<meta name="twitter:card" content="summary_large_image"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        "brand-navy": "#1B2A4A",
+        "brand-gold": "#C9A84C",
+        "brand-cream": "#F9F6F0",
+        "surface": "#fcf9f8",
+        "surface-low": "#f6f3f2",
+        "surface-high": "#eae7e7",
+        "on-surface": "#1b1c1c",
+        "on-surface-variant": "#45464e",
+      },
+      fontFamily: {
+        "serif": ["Cormorant Garamond", "serif"],
+        "sans": ["Manrope", "sans-serif"],
+      }
+    }
+  }
+}
+</script>
+
+<style>
+:root{--navy:#1B2A4A;--gold:#C9A84C;--cream:#F9F6F0;}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Manrope',sans-serif;background:#fcf9f8;color:#1b1c1c;overflow-x:hidden;cursor:none;}
+
+.cursor{width:10px;height:10px;background:var(--gold);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transition:width .2s,height .2s,background .2s;transform:translate(-50%,-50%);}
+.cursor-ring{width:36px;height:36px;border:1.5px solid var(--gold);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transition:width .3s,height .3s,opacity .3s,border-color .3s;transform:translate(-50%,-50%);opacity:.6;}
+.cursor.hover{width:18px;height:18px;background:var(--navy);}
+.cursor-ring.hover{width:56px;height:56px;border-color:var(--navy);opacity:.3;}
+
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24;}
+
+#scroll-progress{position:fixed;top:0;left:0;right:0;height:2px;background:var(--gold);transform-origin:left;transform:scaleX(0);z-index:200;transition:transform .1s linear;}
+
+nav{transition:background .4s ease,box-shadow .4s ease;}
+nav.scrolled{background:rgba(249,246,240,.97)!important;box-shadow:0 1px 24px rgba(27,42,74,.08);}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .3s ease;}
+.nav-link:hover::after{transform:scaleX(1);transform-origin:left;}
+
+.section-label{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);}
+
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .8s ease,transform .8s cubic-bezier(.25,.46,.45,.94);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* Gallery */
+.gallery-main img{transition:opacity .4s ease;}
+.thumb{cursor:pointer;transition:all .3s ease;border:2px solid transparent;}
+.thumb:hover,.thumb.active{border-color:var(--gold);}
+
+/* Lightbox */
+#lightbox{position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease;}
+#lightbox.open{opacity:1;pointer-events:all;}
+#lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:4px;}
+.lb-btn{position:absolute;top:50%;transform:translateY(-50%);width:56px;height:56px;border:1px solid rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;cursor:pointer;transition:all .3s ease;background:rgba(255,255,255,.06);backdrop-filter:blur(8px);}
+.lb-btn:hover{background:var(--gold);border-color:var(--gold);color:var(--navy);}
+.lb-close{position:absolute;top:24px;right:24px;width:48px;height:48px;border:1px solid rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;cursor:pointer;transition:all .3s ease;background:rgba(255,255,255,.06);}
+.lb-close:hover{background:red;border-color:red;}
+
+/* Floor plan */
+.floor-plan-room{position:absolute;border:1.5px solid rgba(201,168,76,.4);background:rgba(201,168,76,.04);cursor:pointer;transition:all .3s ease;display:flex;align-items:center;justify-content:center;border-radius:2px;}
+.floor-plan-room:hover,.floor-plan-room.active{background:rgba(201,168,76,.15);border-color:var(--gold);z-index:10;}
+.floor-plan-room .room-label{font-size:9px;font-weight:600;color:rgba(27,42,74,.6);text-align:center;pointer-events:none;transition:color .3s;text-transform:uppercase;letter-spacing:.05em;}
+.floor-plan-room:hover .room-label,.floor-plan-room.active .room-label{color:var(--navy);}
+.room-tooltip{position:absolute;background:var(--navy);color:white;padding:8px 14px;border-radius:4px;font-size:11px;white-space:nowrap;pointer-events:none;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(6px);opacity:0;transition:all .25s ease;z-index:20;}
+.room-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--navy);}
+.floor-plan-room:hover .room-tooltip,.floor-plan-room.active .room-tooltip{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* Sticky sidebar */
+.sticky-sidebar{position:sticky;top:100px;}
+
+/* Buttons */
+.btn-primary{position:relative;overflow:hidden;background:var(--gold);color:var(--navy);padding:1rem 2rem;font-weight:700;border-radius:.25rem;transition:color .3s,transform .2s;display:inline-flex;align-items:center;gap:.5rem;width:100%;justify-content:center;}
+.btn-primary::before{content:'';position:absolute;inset:0;background:var(--navy);transform:translateX(-101%);transition:transform .35s cubic-bezier(.77,0,.18,1);}
+.btn-primary:hover{color:white;transform:translateY(-2px);}
+.btn-primary:hover::before{transform:translateX(0);}
+.btn-primary span,.btn-primary .mat-icon{position:relative;z-index:1;}
+
+.btn-outline{border:1.5px solid var(--navy);color:var(--navy);padding:.875rem 2rem;font-weight:600;border-radius:.25rem;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem;width:100%;justify-content:center;}
+.btn-outline:hover{background:var(--navy);color:white;}
+
+/* Sold banner */
+#sold-banner{display:none;}
+body.is-sold #sold-banner{display:flex;}
+
+/* Related cards */
+.property-card{transition:transform .4s cubic-bezier(.25,.46,.45,.94),box-shadow .4s ease;}
+.property-card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(27,42,74,.15);}
+.property-card .card-img{transition:transform .7s cubic-bezier(.25,.46,.45,.94);}
+.property-card:hover .card-img{transform:scale(1.06);}
+
+/* Skeleton */
+.skeleton{background:linear-gradient(90deg,#e8e3de 25%,#f0ede8 50%,#e8e3de 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;}
+@keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+
+input:focus,textarea:focus{outline:none;box-shadow:0 0 0 2px var(--gold);}
+
+@media(max-width:768px){
+  body{cursor:auto;}
+  .cursor,.cursor-ring{display:none;}
+  .sticky-sidebar{position:relative;top:auto;}
+}
+</style>
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- SOLD BANNER -->
+<div id="sold-banner" class="fixed top-0 left-0 right-0 z-[60] bg-brand-navy/95 text-white text-center py-3 font-sans text-sm">
+  <span class="text-brand-gold font-semibold">This property has been sold.</span>
+  <span class="opacity-70 ml-2">Contact us to find similar properties.</span>
+</div>
+
+<!-- NAV -->
+<nav id="navbar" class="fixed top-0 w-full z-50 bg-transparent">
+  <div class="flex justify-between items-center w-full px-6 md:px-10 py-5 max-w-screen-2xl mx-auto">
+    <a href="index.html" class="font-serif text-xl md:text-2xl tracking-tight text-white" id="nav-logo" style="transition:color .4s">
+      Meridian Property Group
+    </a>
+    <div class="hidden md:flex items-center space-x-10">
+      <a class="nav-link relative text-white/80 hover:text-white font-sans text-sm tracking-wide transition-colors" href="index.html#listings">Properties</a>
+      <a class="nav-link relative text-white/80 hover:text-white font-sans text-sm tracking-wide transition-colors" href="index.html#about">About</a>
+      <a class="nav-link relative text-white/80 hover:text-white font-sans text-sm tracking-wide transition-colors" href="index.html#enquire">Contact</a>
+    </div>
+    <a href="index.html#enquire" class="btn-primary !w-auto text-sm px-5 py-2.5"><span>Enquire Now</span></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="relative h-[70vh] min-h-[500px] bg-brand-navy overflow-hidden flex items-end" id="hero-section">
+  <img id="hero-img" src="" alt="" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" style="transform:scale(1.04);transition:opacity 1s ease,transform 2s ease"/>
+  <div class="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/40 to-transparent"></div>
+  <div class="relative z-10 max-w-screen-2xl mx-auto px-6 md:px-10 pb-16 w-full">
+    <a href="index.html" class="inline-flex items-center gap-2 text-white/50 text-xs font-sans uppercase tracking-widest mb-6 hover:text-brand-gold transition-colors">
+      <span class="material-symbols-outlined" style="font-size:16px">arrow_back</span> Back to listings
+    </a>
+    <div id="hero-badge" class="inline-block px-3 py-1 text-xs uppercase tracking-widest font-semibold rounded mb-4 bg-brand-navy text-white"></div>
+    <h1 id="hero-title" class="text-4xl md:text-6xl font-serif text-white leading-tight mb-3"></h1>
+    <p id="hero-suburb" class="section-label"></p>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<div class="max-w-screen-2xl mx-auto px-6 md:px-10 py-16">
+  <div class="flex flex-col lg:flex-row gap-16">
+
+    <!-- LEFT — main content -->
+    <div class="lg:w-3/5">
+
+      <!-- Gallery -->
+      <div class="mb-12 reveal">
+        <div class="gallery-main rounded-lg overflow-hidden mb-3" style="aspect-ratio:16/10">
+          <img id="gallery-main-img" src="" alt="" class="w-full h-full object-cover cursor-pointer" onclick="openLightbox(currentGalleryIdx)"/>
+        </div>
+        <div class="grid grid-cols-5 gap-2" id="gallery-thumbs"></div>
+      </div>
+
+      <!-- Description -->
+      <div class="mb-12 reveal" style="transition-delay:.1s">
+        <p class="section-label mb-4">About This Property</p>
+        <div id="description-content" class="space-y-4 text-on-surface-variant font-sans leading-relaxed text-sm"></div>
+      </div>
+
+      <!-- Features -->
+      <div class="mb-12 reveal" style="transition-delay:.15s">
+        <p class="section-label mb-6">Features & Inclusions</p>
+        <div id="features-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+      </div>
+
+      <!-- Floor Plan -->
+      <div class="mb-12 reveal" style="transition-delay:.2s">
+        <p class="section-label mb-4">Interactive Floor Plan</p>
+        <h2 class="text-2xl font-serif text-brand-navy mb-6">Ground Floor</h2>
+        <div class="relative bg-white rounded-lg border border-brand-gold/20 shadow-lg overflow-hidden" style="aspect-ratio:4/3;padding:24px">
+          <svg class="absolute inset-0 w-full h-full" style="opacity:.04" xmlns="http://www.w3.org/2000/svg">
+            <defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1B2A4A" stroke-width=".5"/></pattern></defs>
+            <rect width="100%" height="100%" fill="url(#grid)"/>
+          </svg>
+          <div class="absolute top-3 right-3 text-center" style="font-size:10px;color:var(--gold);font-family:Manrope;font-weight:700"><div>N</div><div style="font-size:16px;line-height:1">↑</div></div>
+          <div class="absolute bottom-3 left-3 flex items-center gap-2" style="font-size:9px;color:#888;font-family:Manrope">
+            <div style="width:40px;height:3px;background:linear-gradient(to right,#1B2A4A 50%,white 50%);border:1px solid #ccc"></div><span>5m</span>
+          </div>
+          <div class="absolute inset-6" id="floor-plan-rooms"></div>
+        </div>
+        <div id="room-info" class="mt-4 p-4 rounded-lg border border-brand-gold/20 bg-white transition-all duration-300" style="min-height:64px">
+          <p class="text-brand-navy/40 text-sm font-sans italic">Click a room to see details</p>
+        </div>
+      </div>
+
+      <!-- Map -->
+      <div class="mb-12 reveal" style="transition-delay:.25s">
+        <p class="section-label mb-4">Location</p>
+        <h2 class="text-2xl font-serif text-brand-navy mb-6">Neighbourhood</h2>
+
+        <!-- Nearby distances -->
+        <div class="grid grid-cols-3 gap-4 mb-6" id="nearby-cards"></div>
+
+        <div class="rounded-lg overflow-hidden border border-brand-gold/20 shadow-sm" style="height:320px">
+          <iframe id="map-embed" src="" width="100%" height="100%" style="border:0" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT — sticky sidebar -->
+    <div class="lg:w-2/5">
+      <div class="sticky-sidebar">
+
+        <!-- Price card -->
+        <div class="bg-brand-navy rounded-lg p-8 mb-6 reveal">
+          <p class="section-label mb-2">Guide Price</p>
+          <p id="sidebar-price" class="font-serif text-white text-4xl mb-6"></p>
+          <div class="grid grid-cols-3 gap-4 mb-6 pb-6 border-b border-white/10">
+            <div class="text-center">
+              <p id="sb-beds" class="text-brand-gold font-serif text-3xl"></p>
+              <p class="text-white/40 text-xs uppercase tracking-wide mt-1 font-sans">Beds</p>
+            </div>
+            <div class="text-center">
+              <p id="sb-baths" class="text-brand-gold font-serif text-3xl"></p>
+              <p class="text-white/40 text-xs uppercase tracking-wide mt-1 font-sans">Baths</p>
+            </div>
+            <div class="text-center">
+              <p id="sb-cars" class="text-brand-gold font-serif text-3xl"></p>
+              <p class="text-white/40 text-xs uppercase tracking-wide mt-1 font-sans">Cars</p>
+            </div>
+          </div>
+          <a id="enquire-btn" href="#enquire-form" class="btn-primary mb-3">
+            <span>Enquire About This Property</span>
+          </a>
+          <button class="btn-outline text-white border-white/20 hover:bg-white hover:text-brand-navy" onclick="openLightbox(0)">
+            <span class="material-symbols-outlined" style="font-size:18px">photo_library</span>
+            <span>View All Photos</span>
+          </button>
+        </div>
+
+        <!-- Agent card -->
+        <div class="bg-white rounded-lg border border-brand-gold/20 p-6 mb-6 reveal" style="transition-delay:.1s" id="agent-card"></div>
+
+        <!-- Open for Inspection -->
+        <div class="bg-brand-cream rounded-lg p-6 mb-6 reveal" style="transition-delay:.15s">
+          <p class="section-label mb-4">Open for Inspection</p>
+          <div id="inspections-list" class="space-y-3"></div>
+        </div>
+
+        <!-- Enquiry form -->
+        <div class="bg-white rounded-lg border border-brand-gold/20 p-6 reveal" style="transition-delay:.2s" id="enquire-form">
+          <p class="section-label mb-2">Get in Touch</p>
+          <h3 class="text-xl font-serif text-brand-navy mb-6">Enquire About This Property</h3>
+          <form onsubmit="handleEnquiry(event)" class="space-y-4">
+            <div>
+              <input type="text" placeholder="Your Name" required class="w-full border border-surface-high rounded px-4 py-3 font-sans text-sm bg-surface placeholder:text-on-surface-variant/50"/>
+            </div>
+            <div>
+              <input type="email" placeholder="Email Address" required class="w-full border border-surface-high rounded px-4 py-3 font-sans text-sm bg-surface placeholder:text-on-surface-variant/50"/>
+            </div>
+            <div>
+              <input type="tel" placeholder="Phone Number" class="w-full border border-surface-high rounded px-4 py-3 font-sans text-sm bg-surface placeholder:text-on-surface-variant/50"/>
+            </div>
+            <div>
+              <textarea placeholder="Your message…" rows="4" class="w-full border border-surface-high rounded px-4 py-3 font-sans text-sm bg-surface placeholder:text-on-surface-variant/50 resize-none" id="enquiry-message"></textarea>
+            </div>
+            <button type="submit" class="btn-primary"><span>Send Enquiry</span></button>
+          </form>
+          <p id="enquiry-success" class="text-brand-gold text-sm font-sans mt-3 opacity-0 transition-opacity duration-300"></p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SIMILAR PROPERTIES -->
+<section class="py-20 bg-surface-low">
+  <div class="max-w-screen-2xl mx-auto px-6 md:px-10">
+    <p class="section-label mb-3 reveal">You May Also Like</p>
+    <h2 class="text-3xl font-serif text-brand-navy mb-12 reveal" style="transition-delay:.05s">Similar Properties</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="similar-grid"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-slate-900 w-full border-t border-slate-800">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-6 md:px-10 py-20 max-w-screen-2xl mx-auto">
+    <div class="col-span-1">
+      <div class="font-serif text-3xl text-brand-gold mb-6">Meridian</div>
+      <p class="text-slate-400 font-sans text-sm leading-relaxed">Setting the standard for luxury real estate on Sydney's North Shore. Precision, passion, and unparalleled service since 2015.</p>
+    </div>
+    <div>
+      <h4 class="text-white font-serif text-lg mb-6">Explore</h4>
+      <ul class="space-y-4">
+        <li><a class="text-slate-400 hover:text-brand-gold transition-colors font-sans text-sm" href="index.html#listings">Properties for Sale</a></li>
+        <li><a class="text-slate-400 hover:text-brand-gold transition-colors font-sans text-sm" href="index.html#enquire">Property Appraisal</a></li>
+        <li><a class="text-slate-400 hover:text-brand-gold transition-colors font-sans text-sm" href="index.html#enquire">Off-Market Listings</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-white font-serif text-lg mb-6">Suburbs</h4>
+      <ul class="space-y-4">
+        <li><a class="text-slate-400 hover:text-brand-gold transition-colors font-sans text-sm" href="#">Mosman</a></li>
+        <li><a class="text-slate-400 hover:text-brand-gold transition-colors font-sans text-sm" href="#">Neutral Bay</a></li>
+        <li><a class="text-slate-400 hover:text-brand-gold transition-colors font-sans text-sm" href="#">Cremorne Point</a></li>
+        <li><a class="text-slate-400 hover:text-brand-gold transition-colors font-sans text-sm" href="#">Pymble</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-white font-serif text-lg mb-6">Office</h4>
+      <address class="text-slate-400 font-sans text-sm mb-4 leading-relaxed not-italic">124 Military Road<br/>Neutral Bay, NSW 2089<br/>Australia</address>
+      <a href="tel:+61290000000" class="text-brand-gold font-sans text-sm block mb-2 hover:text-white transition-colors">(02) 9000 0000</a>
+      <a href="mailto:hello@meridianpropertygroup.com.au" class="text-brand-gold font-sans text-sm hover:text-white transition-colors">hello@meridianproperty.com.au</a>
+    </div>
+  </div>
+  <div class="max-w-screen-2xl mx-auto px-6 md:px-10 pb-10">
+    <div class="pt-10 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-slate-500 text-xs font-sans">© 2026 Meridian Property Group. All rights reserved. Licensed Real Estate Agent NSW.</p>
+      <div class="flex gap-8">
+        <a class="text-slate-500 text-xs font-sans uppercase tracking-widest hover:text-brand-gold transition-colors" href="#">Facebook</a>
+        <a class="text-slate-500 text-xs font-sans uppercase tracking-widest hover:text-brand-gold transition-colors" href="#">Instagram</a>
+        <a class="text-slate-500 text-xs font-sans uppercase tracking-widest hover:text-brand-gold transition-colors" href="#">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightboxOnBg(event)">
+  <button class="lb-close" onclick="closeLightbox()"><span class="material-symbols-outlined">close</span></button>
+  <button class="lb-btn" style="left:24px" onclick="lbPrev()"><span class="material-symbols-outlined">arrow_back</span></button>
+  <img id="lb-img" src="" alt=""/>
+  <button class="lb-btn" style="right:24px" onclick="lbNext()"><span class="material-symbols-outlined">arrow_forward</span></button>
+  <div id="lb-counter" style="position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.5);font-family:Manrope;font-size:12px;"></div>
+</div>
+
+<script>
+// ─── DATA LAYER ─────────────────────────────────────────────────────────────
+let DATA = null;
+let LISTING = null;
+let currentGalleryIdx = 0;
+let lbIdx = 0;
+
+const params = new URLSearchParams(window.location.search);
+const listingId = params.get('id');
+
+async function loadData() {
+  try {
+    const res = await fetch('listings.json');
+    DATA = await res.json();
+
+    LISTING = DATA.listings.find(l => l.id === listingId);
+    if (!LISTING) {
+      // 404 handling — redirect home
+      document.title = 'Property Not Found | Meridian Property Group';
+      document.body.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100vh;flex-direction:column;font-family:Manrope">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:3rem;color:#1B2A4A">Property not found</p>
+        <a href="index.html" style="margin-top:1rem;color:#C9A84C;font-size:.875rem">← Back to listings</a>
+      </div>`;
+      return;
+    }
+
+    init();
+  } catch(e) {
+    console.error('Could not load listings.json', e);
+  }
+}
+
+function init() {
+  updateSEO();
+  renderHero();
+  renderGallery();
+  renderDescription();
+  renderFeatures();
+  renderFloorPlan();
+  renderNearby();
+  renderSidebar();
+  renderAgent();
+  renderInspections();
+  renderSimilar();
+  prefillEnquiry();
+
+  if (LISTING.status === 'sold') {
+    document.body.classList.add('is-sold');
+    document.getElementById('sold-banner').style.display = 'flex';
+  }
+
+  // Init observers after render
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+}
+
+// ─── SEO ─────────────────────────────────────────────────────────────────
+function updateSEO() {
+  const l = LISTING;
+  const base = 'https://guidoifawkes83-stack.github.io/meridian-property-group/';
+  const url = `${base}listing.html?id=${l.id}`;
+  const title = `${l.address}, ${l.suburb} — ${l.price} | Meridian Property Group`;
+  const desc = `${l.beds} bed, ${l.baths} bath luxury home in ${l.suburb}. ${l.description[0]}`;
+
+  document.title = title;
+  setMeta('description', desc);
+  setMeta('og:title', title, true);
+  setMeta('og:description', desc, true);
+  setMeta('og:url', url, true);
+  setMeta('og:image', l.hero, true);
+  setMeta('twitter:title', title, true);
+  setMeta('twitter:description', desc, true);
+  setMeta('twitter:image', l.hero, true);
+
+  // Canonical
+  let can = document.querySelector('link[rel="canonical"]');
+  if (!can) { can = document.createElement('link'); can.rel = 'canonical'; document.head.appendChild(can); }
+  can.href = url;
+
+  // Schema
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": `${l.address}, ${l.suburb}`,
+    "description": desc,
+    "image": l.images,
+    "offers": {
+      "@type": "Offer",
+      "price": l.priceRaw || 0,
+      "priceCurrency": "AUD",
+      "availability": l.status === 'active' ? "InStock" : "OutOfStock"
+    }
+  };
+  let s = document.querySelector('script[type="application/ld+json"]');
+  if (!s) { s = document.createElement('script'); s.type = 'application/ld+json'; document.head.appendChild(s); }
+  s.textContent = JSON.stringify(schema);
+}
+
+function setMeta(name, content, isOG = false) {
+  const attr = isOG ? 'property' : 'name';
+  let el = document.querySelector(`meta[${attr}="${name}"]`);
+  if (!el) { el = document.createElement('meta'); el.setAttribute(attr, name); document.head.appendChild(el); }
+  el.setAttribute('content', content);
+}
+
+// ─── HERO ────────────────────────────────────────────────────────────────
+function renderHero() {
+  const l = LISTING;
+  const img = document.getElementById('hero-img');
+  img.src = l.hero;
+  img.alt = `${l.address}, ${l.suburb}`;
+  img.onload = () => { img.style.opacity = '1'; img.style.transform = 'scale(1)'; };
+
+  const badge = document.getElementById('hero-badge');
+  badge.textContent = l.badge || '';
+  badge.className = `inline-block px-3 py-1 text-xs uppercase tracking-widest font-semibold rounded mb-4 ${badgeClasses(l.badge)}`;
+
+  document.getElementById('hero-title').textContent = l.address;
+  document.getElementById('hero-suburb').textContent = l.suburb + ', NSW';
+}
+
+function badgeClasses(badge) {
+  if (!badge) return '';
+  const lower = badge.toLowerCase();
+  if (lower.includes('exclusive')) return 'bg-brand-gold text-brand-navy';
+  if (lower.includes('sold'))      return 'bg-red-700 text-white';
+  return 'bg-brand-navy text-white';
+}
+
+// ─── GALLERY ─────────────────────────────────────────────────────────────
+function renderGallery() {
+  const images = LISTING.images;
+  if (!images || !images.length) return;
+
+  setGalleryMain(0);
+
+  const thumbs = document.getElementById('gallery-thumbs');
+  thumbs.innerHTML = images.map((img, i) => `
+    <div class="thumb rounded overflow-hidden cursor-pointer ${i===0?'active':''}" onclick="setGalleryMain(${i})" style="aspect-ratio:4/3">
+      <img src="${img}" alt="Photo ${i+1}" class="w-full h-full object-cover hover:opacity-80 transition-opacity" onerror="this.parentElement.style.display='none'"/>
+    </div>
+  `).join('');
+}
+
+function setGalleryMain(idx) {
+  currentGalleryIdx = idx;
+  const mainImg = document.getElementById('gallery-main-img');
+  mainImg.style.opacity = '0';
+  setTimeout(() => {
+    mainImg.src = LISTING.images[idx];
+    mainImg.alt = `${LISTING.address} — photo ${idx+1}`;
+    mainImg.style.opacity = '1';
+  }, 150);
+  document.querySelectorAll('.thumb').forEach((t, i) => t.classList.toggle('active', i === idx));
+}
+
+// ─── LIGHTBOX ────────────────────────────────────────────────────────────
+function openLightbox(idx) {
+  lbIdx = idx;
+  document.getElementById('lightbox').classList.add('open');
+  updateLightbox();
+  document.addEventListener('keydown', lbKeyHandler);
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.removeEventListener('keydown', lbKeyHandler);
+}
+function closeLightboxOnBg(e) { if (e.target === document.getElementById('lightbox')) closeLightbox(); }
+function lbNext() { lbIdx = (lbIdx + 1) % LISTING.images.length; updateLightbox(); }
+function lbPrev() { lbIdx = (lbIdx - 1 + LISTING.images.length) % LISTING.images.length; updateLightbox(); }
+function updateLightbox() {
+  document.getElementById('lb-img').src = LISTING.images[lbIdx];
+  document.getElementById('lb-counter').textContent = `${lbIdx + 1} / ${LISTING.images.length}`;
+}
+function lbKeyHandler(e) {
+  if (e.key === 'ArrowRight') lbNext();
+  if (e.key === 'ArrowLeft') lbPrev();
+  if (e.key === 'Escape') closeLightbox();
+}
+
+// ─── DESCRIPTION ─────────────────────────────────────────────────────────
+function renderDescription() {
+  document.getElementById('description-content').innerHTML =
+    LISTING.description.map(p => `<p>${p}</p>`).join('');
+}
+
+// ─── FEATURES ────────────────────────────────────────────────────────────
+function renderFeatures() {
+  document.getElementById('features-grid').innerHTML =
+    LISTING.features.map(f => `
+      <div class="flex items-start gap-3 p-3 rounded-lg bg-white border border-surface-high">
+        <span class="material-symbols-outlined text-brand-gold shrink-0 mt-0.5" style="font-size:18px">check_circle</span>
+        <span class="font-sans text-sm text-on-surface-variant">${f}</span>
+      </div>
+    `).join('');
+}
+
+// ─── FLOOR PLAN ──────────────────────────────────────────────────────────
+function renderFloorPlan() {
+  if (!LISTING.floorPlan) return;
+
+  const container = document.getElementById('floor-plan-rooms');
+  container.innerHTML = LISTING.floorPlan.map(room => `
+    <div class="floor-plan-room"
+      style="left:${room.left};top:${room.top};width:${room.width};height:${room.height}"
+      data-room="${room.name}" data-area="${room.area}" data-features="${room.features}">
+      <div class="room-label">${room.name}</div>
+      <div class="room-tooltip">${room.name} · ${room.area}<br/><span style="opacity:.7;font-size:10px">${room.features}</span></div>
+    </div>
+  `).join('');
+
+  container.querySelectorAll('.floor-plan-room').forEach(room => {
+    room.addEventListener('click', () => {
+      container.querySelectorAll('.floor-plan-room').forEach(r => r.classList.remove('active'));
+      room.classList.add('active');
+      document.getElementById('room-info').innerHTML = `
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="font-serif text-brand-navy text-lg">${room.dataset.room}</p>
+            <p class="text-on-surface-variant text-xs font-sans mt-1">${room.dataset.features}</p>
+          </div>
+          <p class="text-brand-gold font-serif text-xl">${room.dataset.area}</p>
+        </div>`;
+    });
+  });
+}
+
+// ─── NEARBY ──────────────────────────────────────────────────────────────
+function renderNearby() {
+  if (LISTING.mapEmbed) {
+    document.getElementById('map-embed').src = LISTING.mapEmbed;
+  }
+  if (!LISTING.nearby) return;
+  document.getElementById('nearby-cards').innerHTML = LISTING.nearby.map(n => `
+    <div class="bg-white rounded-lg border border-surface-high p-4 text-center">
+      <span class="material-symbols-outlined text-brand-gold" style="font-size:24px">${n.icon}</span>
+      <p class="font-sans text-xs text-on-surface-variant mt-2">${n.name}</p>
+      <p class="font-serif text-brand-navy text-lg mt-1">${n.distance}</p>
+    </div>
+  `).join('');
+}
+
+// ─── SIDEBAR ─────────────────────────────────────────────────────────────
+function renderSidebar() {
+  document.getElementById('sidebar-price').textContent = LISTING.price;
+  document.getElementById('sb-beds').textContent = LISTING.beds;
+  document.getElementById('sb-baths').textContent = LISTING.baths;
+  document.getElementById('sb-cars').textContent = LISTING.cars;
+}
+
+function renderAgent() {
+  const agent = DATA.agent;
+  document.getElementById('agent-card').innerHTML = `
+    <div class="flex items-center gap-4">
+      <img src="${agent.photo}" alt="${agent.name}" class="w-14 h-14 rounded-full object-cover object-top flex-shrink-0" onerror="this.style.background='#e8e3de'"/>
+      <div class="flex-1">
+        <p class="font-serif text-brand-navy text-lg">${agent.name}</p>
+        <p class="text-on-surface-variant text-xs font-sans mb-3">${agent.title}</p>
+        <div class="flex gap-4">
+          <a href="tel:${agent.phone}" class="text-xs font-sans font-semibold text-brand-gold hover:text-brand-navy transition-colors flex items-center gap-1">
+            <span class="material-symbols-outlined" style="font-size:14px">call</span> ${agent.phoneDisplay}
+          </a>
+          <a href="mailto:${agent.email}" class="text-xs font-sans font-semibold text-brand-gold hover:text-brand-navy transition-colors flex items-center gap-1">
+            <span class="material-symbols-outlined" style="font-size:14px">mail</span> Email
+          </a>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderInspections() {
+  if (!LISTING.inspections) return;
+  document.getElementById('inspections-list').innerHTML = LISTING.inspections.map(date => `
+    <div class="flex items-center gap-3 p-3 bg-white rounded-lg border border-brand-gold/20">
+      <span class="material-symbols-outlined text-brand-gold shrink-0" style="font-size:18px">event</span>
+      <span class="font-sans text-sm text-on-surface">${date}</span>
+    </div>
+  `).join('');
+}
+
+function prefillEnquiry() {
+  const msg = document.getElementById('enquiry-message');
+  if (msg) msg.value = `Hi, I'm interested in ${LISTING.address}, ${LISTING.suburb} (listed at ${LISTING.price}). Could you please send me more information?`;
+}
+
+// ─── SIMILAR ─────────────────────────────────────────────────────────────
+function renderSimilar() {
+  const others = DATA.listings
+    .filter(l => l.id !== LISTING.id && l.status === 'active')
+    .slice(0, 3);
+
+  document.getElementById('similar-grid').innerHTML = others.map((l, i) => `
+    <article class="property-card bg-white rounded-lg overflow-hidden reveal" style="transition-delay:${i * 0.1}s">
+      <a href="listing.html?id=${l.id}">
+        <div class="aspect-video overflow-hidden relative">
+          <img class="card-img w-full h-full object-cover" src="${l.cardImage}" alt="${l.address}" onerror="this.style.background='#e8e3de'"/>
+          <div class="absolute top-3 left-3 px-2 py-1 text-xs uppercase tracking-widest font-semibold rounded ${badgeClasses(l.badge)}">${l.badge || ''}</div>
+        </div>
+        <div class="p-5">
+          <p class="section-label mb-1">${l.suburb}</p>
+          <h3 class="text-xl font-serif text-brand-navy mb-3">${l.address}</h3>
+          <div class="flex items-center gap-4 text-on-surface-variant mb-4 text-sm">
+            <div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">bed</span>${l.beds}</div>
+            <div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">bathtub</span>${l.baths}</div>
+            <div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">directions_car</span>${l.cars}</div>
+          </div>
+          <p class="font-serif text-brand-navy text-xl">${l.price}</p>
+        </div>
+      </a>
+    </article>
+  `).join('');
+
+  document.querySelectorAll('#similar-grid .reveal').forEach(el => revealObs.observe(el));
+}
+
+// ─── FORM ────────────────────────────────────────────────────────────────
+function handleEnquiry(e) {
+  e.preventDefault();
+  const msg = document.getElementById('enquiry-success');
+  msg.textContent = "✓ Thank you — we'll be in touch within 24 hours.";
+  msg.style.opacity = '1';
+  e.target.reset();
+  prefillEnquiry();
+  setTimeout(() => { msg.style.opacity = '0'; }, 6000);
+}
+
+// ─── CURSOR ──────────────────────────────────────────────────────────────
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mouseX=0,mouseY=0,ringX=0,ringY=0;
+
+document.addEventListener('mousemove', e => {
+  mouseX=e.clientX; mouseY=e.clientY;
+  cursor.style.left=mouseX+'px'; cursor.style.top=mouseY+'px';
+});
+(function animateRing(){
+  ringX+=(mouseX-ringX)*.12; ringY+=(mouseY-ringY)*.12;
+  ring.style.left=ringX+'px'; ring.style.top=ringY+'px';
+  requestAnimationFrame(animateRing);
+})();
+
+document.querySelectorAll('a,button,.floor-plan-room,.property-card').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursor.classList.add('hover'); ring.classList.add('hover'); });
+  el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); ring.classList.remove('hover'); });
+});
+
+// ─── SCROLL PROGRESS ─────────────────────────────────────────────────────
+const progressBar = document.getElementById('scroll-progress');
+window.addEventListener('scroll', () => {
+  progressBar.style.transform = `scaleX(${window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)})`;
+},{passive:true});
+
+// ─── NAV ─────────────────────────────────────────────────────────────────
+const navbar=document.getElementById('navbar');
+const navLogo=document.getElementById('nav-logo');
+window.addEventListener('scroll', () => {
+  const scrolled=window.scrollY>80;
+  navbar.classList.toggle('scrolled',scrolled);
+  navLogo.style.color=scrolled?'#1B2A4A':'white';
+},{passive:true});
+
+// ─── SCROLL REVEAL ───────────────────────────────────────────────────────
+const revealObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target);}
+  });
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+
+// ─── BOOT ────────────────────────────────────────────────────────────────
+loadData();
+</script>
+</body>
+</html>

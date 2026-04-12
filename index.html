@@ -3,33 +3,24 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-
-<!-- SEO -->
 <title>Meridian Property Group | North Shore Sydney Real Estate Agents</title>
 <meta name="description" content="Meridian Property Group — North Shore Sydney's boutique luxury real estate specialists. Buy, sell or invest in Mosman, Neutral Bay, Cremorne Point and surrounds. Book a free appraisal today."/>
-<meta name="keywords" content="real estate agent North Shore Sydney, property for sale Mosman, luxury homes Neutral Bay, Cremorne Point real estate, North Shore property specialist, sell my home North Shore, buy property Sydney North Shore, real estate agent Mosman, off market properties North Shore, property appraisal North Shore"/>
+<meta name="keywords" content="real estate agent North Shore Sydney, property for sale Mosman, luxury homes Neutral Bay, Cremorne Point real estate, North Shore property specialist"/>
 <meta name="robots" content="index, follow"/>
 <meta name="author" content="Meridian Property Group"/>
 <link rel="canonical" href="https://guidoifawkes83-stack.github.io/meridian-property-group/"/>
-
-<!-- OG -->
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://guidoifawkes83-stack.github.io/meridian-property-group/"/>
 <meta property="og:title" content="Meridian Property Group | North Shore Sydney Real Estate"/>
 <meta property="og:description" content="North Shore Sydney's boutique luxury real estate specialists. Mosman, Neutral Bay, Cremorne Point and surrounds."/>
-<meta property="og:image" content="https://guidoifawkes83-stack.github.io/meridian-property-group/assets/images/og-image.jpg"/>
-<meta property="og:image:width" content="1200"/>
-<meta property="og:image:height" content="630"/>
+<meta property="og:image" content="assets/images/og-image.jpg"/>
 <meta property="og:site_name" content="Meridian Property Group"/>
 <meta property="og:locale" content="en_AU"/>
-
-<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Meridian Property Group | North Shore Sydney Real Estate"/>
 <meta name="twitter:description" content="North Shore Sydney's boutique luxury real estate specialists."/>
-<meta name="twitter:image" content="https://guidoifawkes83-stack.github.io/meridian-property-group/assets/images/og-image.jpg"/>
+<meta name="twitter:image" content="assets/images/og-image.jpg"/>
 
-<!-- Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -52,12 +43,10 @@
 }
 </script>
 
-<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-
-<script id="tailwind-config">
+<script>
 tailwind.config = {
   theme: {
     extend: {
@@ -65,10 +54,8 @@ tailwind.config = {
         "brand-navy": "#1B2A4A",
         "brand-gold": "#C9A84C",
         "brand-cream": "#F9F6F0",
-        "brand-charcoal": "#2D2D2D",
         "surface": "#fcf9f8",
         "surface-low": "#f6f3f2",
-        "surface-mid": "#f0eded",
         "surface-high": "#eae7e7",
         "on-surface": "#1b1c1c",
         "on-surface-variant": "#45464e",
@@ -83,315 +70,118 @@ tailwind.config = {
 </script>
 
 <style>
-  :root {
-    --navy: #1B2A4A;
-    --gold: #C9A84C;
-    --cream: #F9F6F0;
-    --gold-light: rgba(201,168,76,0.12);
+  :root { --navy:#1B2A4A; --gold:#C9A84C; --cream:#F9F6F0; }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Manrope',sans-serif;background:#fcf9f8;color:#1b1c1c;overflow-x:hidden;cursor:none;}
+
+  .cursor{width:10px;height:10px;background:var(--gold);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transition:width .2s,height .2s,background .2s;transform:translate(-50%,-50%);}
+  .cursor-ring{width:36px;height:36px;border:1.5px solid var(--gold);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transition:width .3s,height .3s,opacity .3s,border-color .3s;transform:translate(-50%,-50%);opacity:.6;}
+  .cursor.hover{width:18px;height:18px;background:var(--navy);}
+  .cursor-ring.hover{width:56px;height:56px;border-color:var(--navy);opacity:.3;}
+
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24;}
+  .font-serif{font-family:'Cormorant Garamond',serif;}
+
+  .parallax-bg{will-change:transform;}
+  .mosaic-tile{opacity:0;transform:scale(.5) rotate(5deg);transition:opacity .6s cubic-bezier(.34,1.56,.64,1),transform .6s cubic-bezier(.34,1.56,.64,1);}
+  .mosaic-tile.visible{opacity:1;transform:scale(1) rotate(0);}
+  .mosaic-tile-gold{position:relative;overflow:hidden;}
+  .mosaic-tile-gold::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.25) 0%,transparent 60%);opacity:0;transition:opacity .4s;}
+  .mosaic-tile-gold:hover::after{opacity:1;}
+
+  .hero-word{display:inline-block;opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s cubic-bezier(.34,1.2,.64,1);}
+  .hero-word.visible{opacity:1;transform:translateY(0);}
+  .hero-sub{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+  .hero-sub.visible{opacity:1;transform:translateY(0);}
+  .hero-image{opacity:0;transform:scale(1.08);transition:opacity 1.4s ease,transform 1.8s cubic-bezier(.25,.46,.45,.94);}
+  .hero-image.visible{opacity:1;transform:scale(1);}
+
+  .reveal{opacity:0;transform:translateY(32px);transition:opacity .8s ease,transform .8s cubic-bezier(.25,.46,.45,.94);}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  .property-card{transition:transform .4s cubic-bezier(.25,.46,.45,.94),box-shadow .4s ease;transform-origin:center bottom;}
+  .property-card:hover{transform:translateY(-8px) scale(1.01);box-shadow:0 32px 64px rgba(27,42,74,.18);}
+  .property-card .card-img{transition:transform .7s cubic-bezier(.25,.46,.45,.94);}
+  .property-card:hover .card-img{transform:scale(1.08);}
+  .property-card .card-overlay{opacity:0;transition:opacity .4s ease;}
+  .property-card:hover .card-overlay{opacity:1;}
+
+  .sold-card{position:relative;}
+  .sold-card::after{content:'SOLD';position:absolute;inset:0;background:rgba(27,42,74,.72);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--gold);letter-spacing:.15em;pointer-events:none;}
+
+  .btn-primary{position:relative;overflow:hidden;background:var(--gold);color:var(--navy);padding:1rem 2.5rem;font-weight:700;border-radius:.25rem;transition:color .3s,transform .2s;display:inline-flex;align-items:center;gap:.5rem;}
+  .btn-primary::before{content:'';position:absolute;inset:0;background:var(--navy);transform:translateX(-101%);transition:transform .35s cubic-bezier(.77,0,.18,1);}
+  .btn-primary:hover{color:white;transform:translateY(-2px);}
+  .btn-primary:hover::before{transform:translateX(0);}
+  .btn-primary span,.btn-primary .mat-icon{position:relative;z-index:1;}
+  .btn-primary:active{transform:translateY(0) scale(.98);}
+
+  .btn-ghost{position:relative;overflow:hidden;border:1.5px solid rgba(255,255,255,.35);color:white;padding:1rem 2.5rem;font-weight:500;border-radius:.25rem;transition:border-color .3s,color .3s,transform .2s;display:inline-flex;align-items:center;gap:.5rem;}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
+
+  .carousel-track{display:flex;transition:transform .6s cubic-bezier(.77,0,.18,1);}
+  .carousel-slide{min-width:100%;}
+  .carousel-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);transition:all .3s ease;cursor:pointer;}
+  .carousel-dot.active{background:var(--gold);width:28px;border-radius:4px;}
+  .carousel-btn{width:48px;height:48px;border:1px solid rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;cursor:pointer;transition:all .3s ease;backdrop-filter:blur(8px);background:rgba(255,255,255,.08);}
+  .carousel-btn:hover{background:var(--gold);border-color:var(--gold);color:var(--navy);transform:scale(1.08);}
+
+  .floor-plan-room{position:absolute;border:1.5px solid rgba(201,168,76,.4);background:rgba(201,168,76,.04);cursor:pointer;transition:all .3s ease;display:flex;align-items:center;justify-content:center;border-radius:2px;}
+  .floor-plan-room:hover,.floor-plan-room.active{background:rgba(201,168,76,.15);border-color:var(--gold);z-index:10;}
+  .floor-plan-room .room-label{font-size:9px;font-weight:600;color:rgba(27,42,74,.6);text-align:center;pointer-events:none;transition:color .3s;text-transform:uppercase;letter-spacing:.05em;font-family:'Manrope',sans-serif;}
+  .floor-plan-room:hover .room-label,.floor-plan-room.active .room-label{color:var(--navy);}
+  .room-tooltip{position:absolute;background:var(--navy);color:white;padding:8px 14px;border-radius:4px;font-size:11px;font-family:'Manrope',sans-serif;white-space:nowrap;pointer-events:none;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(6px);opacity:0;transition:all .25s ease;z-index:20;}
+  .room-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--navy);}
+  .floor-plan-room:hover .room-tooltip,.floor-plan-room.active .room-tooltip{opacity:1;transform:translateX(-50%) translateY(0);}
+
+  #sticky-cta{position:fixed;bottom:28px;right:28px;z-index:100;transform:translateY(120px);transition:transform .5s cubic-bezier(.34,1.56,.64,1),opacity .4s;opacity:0;}
+  #sticky-cta.visible{transform:translateY(0);opacity:1;}
+  .sticky-btn{background:var(--gold);color:var(--navy);padding:14px 24px;border-radius:50px;font-weight:700;font-size:14px;font-family:'Manrope',sans-serif;display:flex;align-items:center;gap:8px;box-shadow:0 8px 32px rgba(201,168,76,.4);transition:all .3s ease;white-space:nowrap;border:none;cursor:pointer;}
+  .sticky-btn:hover{background:var(--navy);color:white;box-shadow:0 12px 40px rgba(27,42,74,.35);transform:translateY(-3px);}
+
+  .stat-num{font-family:'Cormorant Garamond',serif;}
+  .gold-line{height:1px;background:var(--gold);transform-origin:left;transform:scaleX(0);transition:transform .8s cubic-bezier(.77,0,.18,1);}
+  .gold-line.visible{transform:scaleX(1);}
+  .featured-badge{opacity:0;transform:translateX(20px);transition:all .6s cubic-bezier(.34,1.2,.64,1);}
+  .featured-badge.visible{opacity:1;transform:translateX(0);}
+  .section-label{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);}
+
+  #scroll-progress{position:fixed;top:0;left:0;right:0;height:2px;background:var(--gold);transform-origin:left;transform:scaleX(0);z-index:200;transition:transform .1s linear;}
+
+  nav{transition:background .4s ease,box-shadow .4s ease;}
+  nav.scrolled{background:rgba(249,246,240,.97)!important;box-shadow:0 1px 24px rgba(27,42,74,.08);}
+  .nav-link{position:relative;}
+  .nav-link::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .3s ease;}
+  .nav-link:hover::after{transform:scaleX(1);transform-origin:left;}
+
+  input:focus{outline:none;box-shadow:0 0 0 2px var(--gold);}
+
+  @keyframes scrollHint{
+    0%{transform:scaleY(0);transform-origin:top;opacity:0;}
+    50%{transform:scaleY(1);transform-origin:top;opacity:1;}
+    100%{transform:scaleY(1);transform-origin:bottom;opacity:0;}
   }
 
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Manrope', sans-serif; background: #fcf9f8; color: #1b1c1c; overflow-x: hidden; cursor: none; }
-
-  /* ── CUSTOM CURSOR ── */
-  .cursor {
-    width: 10px; height: 10px;
-    background: var(--gold);
-    border-radius: 50%;
-    position: fixed; top: 0; left: 0;
-    pointer-events: none; z-index: 9999;
-    transition: transform 0.15s ease, width 0.2s, height 0.2s, background 0.2s;
-    transform: translate(-50%, -50%);
-  }
-  .cursor-ring {
-    width: 36px; height: 36px;
-    border: 1.5px solid var(--gold);
-    border-radius: 50%;
-    position: fixed; top: 0; left: 0;
-    pointer-events: none; z-index: 9998;
-    transition: transform 0.35s cubic-bezier(.25,.46,.45,.94), width 0.3s, height 0.3s, opacity 0.3s;
-    transform: translate(-50%, -50%);
-    opacity: 0.6;
-  }
-  .cursor.hover { width: 18px; height: 18px; background: var(--navy); }
-  .cursor-ring.hover { width: 56px; height: 56px; border-color: var(--navy); opacity: 0.3; }
-
-  /* ── FONTS ── */
-  .font-serif { font-family: 'Cormorant Garamond', serif; }
-
-  /* ── MATERIAL SYMBOLS ── */
-  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
-
-  /* ── PARALLAX HERO ── */
-  .parallax-bg {
-    will-change: transform;
-    transition: transform 0.05s linear;
+  @media(max-width:768px){
+    body{cursor:auto;}
+    .cursor,.cursor-ring{display:none;}
+    #sticky-cta{bottom:16px;right:16px;}
+    .sticky-btn{padding:12px 18px;font-size:13px;}
   }
 
-  /* ── MOSAIC TILES ── */
-  .mosaic-tile {
-    opacity: 0;
-    transform: scale(0.5) rotate(5deg);
-    transition: opacity 0.6s cubic-bezier(.34,1.56,.64,1), transform 0.6s cubic-bezier(.34,1.56,.64,1);
-  }
-  .mosaic-tile.visible { opacity: 1; transform: scale(1) rotate(0deg); }
-  .mosaic-tile-gold { position: relative; overflow: hidden; }
-  .mosaic-tile-gold::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 60%);
-    opacity: 0;
-    transition: opacity 0.4s;
-  }
-  .mosaic-tile-gold:hover::after { opacity: 1; }
-
-  /* ── HERO CONTENT ── */
-  .hero-word {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.34,1.2,.64,1);
-  }
-  .hero-word.visible { opacity: 1; transform: translateY(0); }
-
-  .hero-sub {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .hero-sub.visible { opacity: 1; transform: translateY(0); }
-
-  /* ── HERO IMAGE ── */
-  .hero-image {
-    opacity: 0;
-    transform: scale(1.08);
-    transition: opacity 1.4s ease, transform 1.8s cubic-bezier(.25,.46,.45,.94);
-  }
-  .hero-image.visible { opacity: 1; transform: scale(1); }
-
-  /* ── SCROLL REVEAL ── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(32px);
-    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.25,.46,.45,.94);
-  }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  /* ── PROPERTY CARDS ── */
-  .property-card {
-    transition: transform 0.4s cubic-bezier(.25,.46,.45,.94), box-shadow 0.4s ease;
-    transform-origin: center bottom;
-  }
-  .property-card:hover {
-    transform: translateY(-8px) scale(1.01);
-    box-shadow: 0 32px 64px rgba(27,42,74,0.18);
-  }
-  .property-card .card-img { transition: transform 0.7s cubic-bezier(.25,.46,.45,.94); }
-  .property-card:hover .card-img { transform: scale(1.08); }
-  .property-card .card-overlay {
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-  .property-card:hover .card-overlay { opacity: 1; }
-
-  /* ── BUTTONS ── */
-  .btn-primary {
-    position: relative; overflow: hidden;
-    background: var(--gold); color: var(--navy);
-    padding: 1rem 2.5rem; font-weight: 700;
-    border-radius: 0.25rem;
-    transition: color 0.3s, transform 0.2s;
-    display: inline-flex; align-items: center; gap: 0.5rem;
-  }
-  .btn-primary::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: var(--navy);
-    transform: translateX(-101%);
-    transition: transform 0.35s cubic-bezier(.77,0,.18,1);
-  }
-  .btn-primary:hover { color: white; transform: translateY(-2px); }
-  .btn-primary:hover::before { transform: translateX(0); }
-  .btn-primary span, .btn-primary .mat-icon { position: relative; z-index: 1; }
-  .btn-primary:active { transform: translateY(0) scale(0.98); }
-
-  .btn-ghost {
-    position: relative; overflow: hidden;
-    border: 1.5px solid rgba(255,255,255,0.35); color: white;
-    padding: 1rem 2.5rem; font-weight: 500;
-    border-radius: 0.25rem;
-    transition: border-color 0.3s, color 0.3s, transform 0.2s;
-    display: inline-flex; align-items: center; gap: 0.5rem;
-  }
-  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
-  .btn-ghost:active { transform: translateY(0) scale(0.98); }
-
-  /* ── CAROUSEL ── */
-  .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(.77,0,.18,1); }
-  .carousel-slide { min-width: 100%; }
-  .carousel-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: rgba(255,255,255,0.3);
-    transition: all 0.3s ease; cursor: pointer;
-  }
-  .carousel-dot.active { background: var(--gold); width: 28px; border-radius: 4px; }
-  .carousel-btn {
-    width: 48px; height: 48px;
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: white; cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(8px);
-    background: rgba(255,255,255,0.08);
-  }
-  .carousel-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); transform: scale(1.08); }
-
-  /* ── FLOOR PLAN ── */
-  .floor-plan-room {
-    position: absolute;
-    border: 1.5px solid rgba(201,168,76,0.4);
-    background: rgba(201,168,76,0.04);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 2px;
-  }
-  .floor-plan-room:hover, .floor-plan-room.active {
-    background: rgba(201,168,76,0.15);
-    border-color: var(--gold);
-    z-index: 10;
-  }
-  .floor-plan-room .room-label {
-    font-size: 9px; font-weight: 600;
-    color: rgba(27,42,74,0.6);
-    text-align: center; pointer-events: none;
-    transition: color 0.3s;
-    text-transform: uppercase; letter-spacing: 0.05em;
-    font-family: 'Manrope', sans-serif;
-  }
-  .floor-plan-room:hover .room-label, .floor-plan-room.active .room-label { color: var(--navy); }
-  .room-tooltip {
-    position: absolute;
-    background: var(--navy); color: white;
-    padding: 8px 14px; border-radius: 4px;
-    font-size: 11px; font-family: 'Manrope', sans-serif;
-    white-space: nowrap; pointer-events: none;
-    bottom: calc(100% + 8px); left: 50%;
-    transform: translateX(-50%) translateY(6px);
-    opacity: 0; transition: all 0.25s ease;
-    z-index: 20;
-  }
-  .room-tooltip::after {
-    content: ''; position: absolute; top: 100%; left: 50%;
-    transform: translateX(-50%);
-    border: 5px solid transparent;
-    border-top-color: var(--navy);
-  }
-  .floor-plan-room:hover .room-tooltip, .floor-plan-room.active .room-tooltip {
-    opacity: 1; transform: translateX(-50%) translateY(0);
-  }
-
-  /* ── STICKY CTA ── */
-  #sticky-cta {
-    position: fixed; bottom: 28px; right: 28px; z-index: 100;
-    transform: translateY(120px);
-    transition: transform 0.5s cubic-bezier(.34,1.56,.64,1), opacity 0.4s;
-    opacity: 0;
-  }
-  #sticky-cta.visible { transform: translateY(0); opacity: 1; }
-  .sticky-btn {
-    background: var(--gold);
-    color: var(--navy);
-    padding: 14px 24px;
-    border-radius: 50px;
-    font-weight: 700; font-size: 14px;
-    font-family: 'Manrope', sans-serif;
-    display: flex; align-items: center; gap-x: 8px; gap: 8px;
-    box-shadow: 0 8px 32px rgba(201,168,76,0.4);
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    border: none; cursor: pointer;
-  }
-  .sticky-btn:hover {
-    background: var(--navy); color: white;
-    box-shadow: 0 12px 40px rgba(27,42,74,0.35);
-    transform: translateY(-3px);
-  }
-  .sticky-btn:active { transform: translateY(-1px) scale(0.98); }
-
-  /* ── STAT COUNTER ── */
-  .stat-num { font-family: 'Cormorant Garamond', serif; }
-
-  /* ── GOLD LINE REVEAL ── */
-  .gold-line {
-    height: 1px; background: var(--gold);
-    transform-origin: left;
-    transform: scaleX(0);
-    transition: transform 0.8s cubic-bezier(.77,0,.18,1);
-  }
-  .gold-line.visible { transform: scaleX(1); }
-
-  /* ── FEATURED BADGE ── */
-  .featured-badge {
-    opacity: 0; transform: translateX(20px);
-    transition: all 0.6s cubic-bezier(.34,1.2,.64,1);
-  }
-  .featured-badge.visible { opacity: 1; transform: translateX(0); }
-
-  /* ── SECTION LABEL ── */
-  .section-label {
-    font-size: 10px; font-weight: 700;
-    letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--gold);
-  }
-
-  /* ── SCROLL PROGRESS ── */
-  #scroll-progress {
-    position: fixed; top: 0; left: 0; right: 0;
-    height: 2px; background: var(--gold);
-    transform-origin: left; transform: scaleX(0);
-    z-index: 200; transition: transform 0.1s linear;
-  }
-
-  /* ── NAV ── */
-  nav { transition: background 0.4s ease, box-shadow 0.4s ease; }
-  nav.scrolled { background: rgba(249,246,240,0.97) !important; box-shadow: 0 1px 24px rgba(27,42,74,0.08); }
-  .nav-link { position: relative; }
-  .nav-link::after {
-    content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
-    height: 1px; background: var(--gold);
-    transform: scaleX(0); transform-origin: right;
-    transition: transform 0.3s ease;
-  }
-  .nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
-
-  /* ── INPUT FOCUS ── */
-  input:focus { outline: none; box-shadow: 0 0 0 2px var(--gold); }
-
-  /* ── MOBILE ── */
-  @media (max-width: 768px) {
-    body { cursor: auto; }
-    .cursor, .cursor-ring { display: none; }
-    #sticky-cta { bottom: 16px; right: 16px; }
-    .sticky-btn { padding: 12px 18px; font-size: 13px; }
-  }
+  /* Skeleton loader */
+  .skeleton{background:linear-gradient(90deg,#e8e3de 25%,#f0ede8 50%,#e8e3de 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;}
+  @keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
 </style>
 </head>
-
 <body>
 
-<!-- Scroll progress bar -->
 <div id="scroll-progress"></div>
-
-<!-- Custom cursor -->
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursor-ring"></div>
 
-<!-- ═══════════════════════════════════════════
-     STICKY CTA
-═══════════════════════════════════════════ -->
+<!-- STICKY CTA -->
 <div id="sticky-cta">
   <button class="sticky-btn" onclick="document.getElementById('enquire').scrollIntoView({behavior:'smooth'})">
     <span class="material-symbols-outlined" style="font-size:18px">calendar_month</span>
@@ -399,12 +189,10 @@ tailwind.config = {
   </button>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     NAV
-═══════════════════════════════════════════ -->
+<!-- NAV -->
 <nav id="navbar" class="fixed top-0 w-full z-50 bg-transparent">
   <div class="flex justify-between items-center w-full px-6 md:px-10 py-5 max-w-screen-2xl mx-auto">
-    <div class="font-serif text-xl md:text-2xl tracking-tight text-white" id="nav-logo" style="transition:color 0.4s">
+    <div class="font-serif text-xl md:text-2xl tracking-tight text-white" id="nav-logo" style="transition:color .4s">
       Meridian Property Group
     </div>
     <div class="hidden md:flex items-center space-x-10">
@@ -418,15 +206,9 @@ tailwind.config = {
   </div>
 </nav>
 
-<!-- ═══════════════════════════════════════════
-     HERO — PARALLAX + TILES + TEXT ANIMATION
-═══════════════════════════════════════════ -->
+<!-- HERO -->
 <section class="relative h-screen min-h-[700px] flex items-center overflow-hidden bg-brand-navy">
-
-  <!-- Parallax background -->
-  <div class="parallax-bg absolute inset-0 z-0 flex" id="parallax-container" style="top:-8%; height:116%">
-
-    <!-- Left mosaic panel -->
+  <div class="parallax-bg absolute inset-0 z-0 flex" id="parallax-container" style="top:-8%;height:116%">
     <div class="hidden lg:grid grid-cols-2 grid-rows-5 w-1/4 h-full shrink-0">
       <div class="mosaic-tile bg-brand-navy border-[0.5px] border-white/5" style="transition-delay:.04s"></div>
       <div class="mosaic-tile bg-brand-navy border-[0.5px] border-white/5" style="transition-delay:.08s"></div>
@@ -439,16 +221,8 @@ tailwind.config = {
       <div class="mosaic-tile mosaic-tile-gold bg-brand-gold border-[0.5px] border-white/10" style="transition-delay:.36s"></div>
       <div class="mosaic-tile bg-brand-navy border-[0.5px] border-white/5" style="transition-delay:.40s"></div>
     </div>
-
-    <!-- Main hero image -->
     <div class="relative flex-1 h-full">
-      <img
-        id="hero-img"
-        class="hero-image w-full h-full object-cover"
-        alt="Luxury waterfront home on Sydney's North Shore — Meridian Property Group"
-        src="assets/images/hero-home.jpg"
-      />
-      <!-- Overlay tiles -->
+      <img id="hero-img" class="hero-image w-full h-full object-cover" alt="Luxury waterfront home on Sydney's North Shore — Meridian Property Group" src="assets/images/hero-home.jpg"/>
       <div class="absolute inset-0 bg-brand-navy/40 lg:bg-transparent">
         <div class="hidden lg:grid grid-cols-4 grid-rows-5 h-full w-1/2">
           <div class="mosaic-tile bg-brand-navy border-[0.5px] border-white/5" style="transition-delay:.44s"></div>
@@ -471,22 +245,17 @@ tailwind.config = {
     </div>
   </div>
 
-  <!-- Hero text content -->
   <div class="relative z-10 max-w-screen-2xl mx-auto px-6 md:px-10 w-full pt-20">
-    <div class="max-w-2xl hero-content">
-      <p class="section-label mb-6 hero-sub" style="transition-delay:0.5s">North Shore Sydney · Est. 2015</p>
-
-      <!-- Word-by-word animation -->
-      <h1 class="text-5xl md:text-7xl font-serif text-white leading-tight mb-8" id="hero-title">
-        <span class="hero-word" style="transition-delay:0.55s">North&nbsp;</span><span class="hero-word" style="transition-delay:0.65s">Shore's&nbsp;</span><span class="hero-word" style="transition-delay:0.75s">Most&nbsp;</span><br/>
-        <span class="hero-word" style="transition-delay:0.85s">Trusted&nbsp;</span><span class="hero-word" style="transition-delay:0.95s">Property&nbsp;</span><br/>
+    <div class="max-w-2xl">
+      <p class="section-label mb-6 hero-sub" style="transition-delay:.5s">North Shore Sydney · Est. 2015</p>
+      <h1 class="text-5xl md:text-7xl font-serif text-white leading-tight mb-8">
+        <span class="hero-word" style="transition-delay:.55s">North&nbsp;</span><span class="hero-word" style="transition-delay:.65s">Shore's&nbsp;</span><span class="hero-word" style="transition-delay:.75s">Most&nbsp;</span><br/>
+        <span class="hero-word" style="transition-delay:.85s">Trusted&nbsp;</span><span class="hero-word" style="transition-delay:.95s">Property&nbsp;</span><br/>
         <span class="hero-word" style="transition-delay:1.05s">Specialists</span>
       </h1>
-
       <p class="text-lg text-white/75 font-sans mb-12 leading-relaxed max-w-lg hero-sub" style="transition-delay:1.15s">
         Helping Sydney families buy and sell with confidence through curated architectural excellence and deep local expertise.
       </p>
-
       <div class="flex flex-col sm:flex-row gap-4 hero-sub" style="transition-delay:1.25s">
         <button class="btn-primary text-base" onclick="document.getElementById('listings').scrollIntoView({behavior:'smooth'})">
           <span>View Our Listings</span>
@@ -499,9 +268,8 @@ tailwind.config = {
     </div>
   </div>
 
-  <!-- Featured badge -->
   <div class="absolute bottom-10 right-10 z-10 hidden md:block featured-badge" id="featured-badge">
-    <div class="bg-white/8 backdrop-blur-lg border border-white/15 p-6 rounded-lg max-w-xs text-white" style="background:rgba(255,255,255,0.07)">
+    <div class="backdrop-blur-lg border border-white/15 p-6 rounded-lg max-w-xs text-white" style="background:rgba(255,255,255,.07)">
       <span class="section-label block mb-2">Featured Location</span>
       <p class="font-serif text-xl">Mosman Bay Heights</p>
       <div class="mt-4 flex items-center gap-2 text-sm text-white/60">
@@ -511,24 +279,13 @@ tailwind.config = {
     </div>
   </div>
 
-  <!-- Scroll hint -->
   <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 hero-sub" style="transition-delay:1.5s">
     <span class="text-white/30 text-xs font-sans tracking-widest uppercase">Scroll</span>
-    <div style="width:1px;height:40px;background:linear-gradient(to bottom,rgba(201,168,76,0.6),transparent);animation:scrollHint 1.8s ease infinite"></div>
+    <div style="width:1px;height:40px;background:linear-gradient(to bottom,rgba(201,168,76,.6),transparent);animation:scrollHint 1.8s ease infinite"></div>
   </div>
 </section>
 
-<style>
-@keyframes scrollHint {
-  0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
-  50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
-  100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
-}
-</style>
-
-<!-- ═══════════════════════════════════════════
-     STATS BAR
-═══════════════════════════════════════════ -->
+<!-- STATS BAR -->
 <section class="bg-brand-navy py-12 border-t border-white/5">
   <div class="max-w-screen-2xl mx-auto px-6 md:px-10">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 md:divide-x divide-white/10">
@@ -552,9 +309,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     VALUE PROPS
-═══════════════════════════════════════════ -->
+<!-- VALUE PROPS -->
 <section class="py-24 bg-surface">
   <div class="max-w-screen-2xl mx-auto px-6 md:px-10">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
@@ -580,9 +335,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     LISTINGS — WITH IMAGE CAROUSEL ON HOVER
-═══════════════════════════════════════════ -->
+<!-- LISTINGS — DYNAMIC -->
 <section id="listings" class="py-24 bg-surface-low">
   <div class="max-w-screen-2xl mx-auto px-6 md:px-10">
     <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
@@ -591,156 +344,73 @@ tailwind.config = {
         <h2 class="text-4xl md:text-5xl font-serif text-brand-navy mb-4">Curated Residences</h2>
         <p class="text-on-surface-variant font-sans text-sm leading-relaxed">Premium homes currently available across North Shore's most coveted suburbs.</p>
       </div>
-      <a class="text-brand-navy font-sans text-sm font-semibold flex items-center gap-2 group reveal border-b border-brand-navy/20 pb-1" href="listings/42-oceanview-crest-mosman.html" style="transition-delay:.1s">
-        Explore Full Collection
-        <span class="material-symbols-outlined transition-transform group-hover:translate-x-1" style="font-size:18px">trending_flat</span>
-      </a>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- Active listings grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="active-listings-grid">
+      <!-- Skeleton placeholders -->
+      <div class="bg-white rounded-lg overflow-hidden">
+        <div class="aspect-[4/5] skeleton"></div>
+        <div class="p-7 space-y-3">
+          <div class="h-3 skeleton rounded w-1/3"></div>
+          <div class="h-6 skeleton rounded w-2/3"></div>
+          <div class="h-4 skeleton rounded w-full"></div>
+          <div class="h-6 skeleton rounded w-1/2"></div>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg overflow-hidden">
+        <div class="aspect-[4/5] skeleton"></div>
+        <div class="p-7 space-y-3">
+          <div class="h-3 skeleton rounded w-1/3"></div>
+          <div class="h-6 skeleton rounded w-2/3"></div>
+          <div class="h-4 skeleton rounded w-full"></div>
+          <div class="h-6 skeleton rounded w-1/2"></div>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg overflow-hidden">
+        <div class="aspect-[4/5] skeleton"></div>
+        <div class="p-7 space-y-3">
+          <div class="h-3 skeleton rounded w-1/3"></div>
+          <div class="h-6 skeleton rounded w-2/3"></div>
+          <div class="h-4 skeleton rounded w-full"></div>
+          <div class="h-6 skeleton rounded w-1/2"></div>
+        </div>
+      </div>
+    </div>
 
-      <!-- Card 1 — Neutral Bay -->
-      <article class="property-card bg-white rounded-lg overflow-hidden reveal" style="transition-delay:.05s">
-        <a href="listings/12-kurraba-road-neutral-bay.html">
-          <div class="aspect-[4/5] overflow-hidden relative">
-            <img class="card-img w-full h-full object-cover" alt="5 bedroom luxury home Neutral Bay" src="assets/images/listing-neutral-bay.jpg"/>
-            <div class="card-overlay absolute inset-0 bg-gradient-to-t from-brand-navy/70 to-transparent flex items-end p-6">
-              <button class="bg-brand-gold text-brand-navy text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wide">View Property</button>
-            </div>
-            <div class="absolute top-4 left-4 bg-brand-navy text-white px-3 py-1 text-xs uppercase tracking-widest font-semibold rounded">Just Listed</div>
-          </div>
-          <div class="p-7">
-            <p class="section-label mb-2">Neutral Bay</p>
-            <h3 class="text-2xl font-serif text-brand-navy mb-4 group-hover:text-brand-gold transition-colors">12 Kurraba Road</h3>
-            <div class="flex items-center gap-5 text-on-surface-variant mb-5 pb-5 border-b border-surface-high text-sm">
-              <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">bed</span><span>5</span></div>
-              <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">bathtub</span><span>4</span></div>
-              <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">directions_car</span><span>3</span></div>
-            </div>
-            <p class="text-2xl font-serif text-brand-navy">$8,450,000</p>
-          </div>
-        </a>
-      </article>
-
-      <!-- Card 2 — Cremorne Point -->
-      <article class="property-card bg-white rounded-lg overflow-hidden reveal" style="transition-delay:.15s">
-        <a href="listings/84-milson-road-cremorne-point.html">
-          <div class="aspect-[4/5] overflow-hidden relative">
-            <img class="card-img w-full h-full object-cover" alt="4 bedroom luxury home Cremorne Point" src="assets/images/listing-cremorne.jpg"/>
-            <div class="card-overlay absolute inset-0 bg-gradient-to-t from-brand-navy/70 to-transparent flex items-end p-6">
-              <button class="bg-brand-gold text-brand-navy text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wide">View Property</button>
-            </div>
-            <div class="absolute top-4 left-4 bg-brand-gold text-brand-navy px-3 py-1 text-xs uppercase tracking-widest font-semibold rounded">Exclusive</div>
-          </div>
-          <div class="p-7">
-            <p class="section-label mb-2">Cremorne Point</p>
-            <h3 class="text-2xl font-serif text-brand-navy mb-4">84 Milson Road</h3>
-            <div class="flex items-center gap-5 text-on-surface-variant mb-5 pb-5 border-b border-surface-high text-sm">
-              <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">bed</span><span>4</span></div>
-              <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">bathtub</span><span>3</span></div>
-              <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">directions_car</span><span>2</span></div>
-            </div>
-            <p class="text-2xl font-serif text-brand-navy">$6,200,000</p>
-          </div>
-        </a>
-      </article>
-
-      <!-- Card 3 — Pymble -->
-      <article class="property-card bg-white rounded-lg overflow-hidden reveal" style="transition-delay:.25s">
-        <a href="listings/22-telegraph-road-pymble.html">
-          <div class="aspect-[4/5] overflow-hidden relative">
-            <img class="card-img w-full h-full object-cover" alt="6 bedroom estate Pymble" src="assets/images/listing-pymble.jpg"/>
-            <div class="card-overlay absolute inset-0 bg-gradient-to-t from-brand-navy/70 to-transparent flex items-end p-6">
-              <button class="bg-brand-gold text-brand-navy text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wide">View Property</button>
-            </div>
-          </div>
-          <div class="p-7">
-            <p class="section-label mb-2">Pymble</p>
-            <h3 class="text-2xl font-serif text-brand-navy mb-4">22 Telegraph Road</h3>
-            <div class="flex items-center gap-5 text-on-surface-variant mb-5 pb-5 border-b border-surface-high text-sm">
-              <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">bed</span><span>6</span></div>
-              <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">bathtub</span><span>5</span></div>
-              <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">directions_car</span><span>4</span></div>
-            </div>
-            <p class="text-2xl font-serif text-brand-navy">Contact Agent</p>
-          </div>
-        </a>
-      </article>
-
+    <!-- Recently Sold row -->
+    <div id="sold-section" class="hidden mt-20">
+      <div class="mb-10">
+        <p class="section-label mb-3">Recently Sold</p>
+        <h3 class="text-3xl font-serif text-brand-navy">Our Recent Results</h3>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="sold-listings-grid"></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     IMAGE CAROUSEL — FEATURED PROPERTY
-═══════════════════════════════════════════ -->
-<section class="bg-brand-navy py-24 overflow-hidden">
+<!-- FEATURED PROPERTY — DYNAMIC CAROUSEL -->
+<section class="bg-brand-navy py-24 overflow-hidden" id="featured-section">
   <div class="max-w-screen-2xl mx-auto px-6 md:px-10">
     <div class="flex flex-col md:flex-row gap-12 items-center">
-
-      <!-- Left — text -->
-      <div class="md:w-2/5 reveal">
+      <div class="md:w-2/5 reveal" id="featured-text">
         <p class="section-label mb-4">Featured Property</p>
-        <h2 class="text-4xl md:text-5xl font-serif text-white mb-6 leading-tight">42 Oceanview Crest,<br/>Mosman</h2>
-        <p class="text-white/50 font-sans text-sm leading-relaxed mb-8">An architectural masterpiece perched above the harbour with panoramic views from every principal room. Designed for those who demand only the exceptional.</p>
-
-        <div class="grid grid-cols-3 gap-6 mb-10">
-          <div>
-            <p class="text-brand-gold font-serif text-3xl">5</p>
-            <p class="text-white/40 text-xs uppercase tracking-wide mt-1">Bedrooms</p>
-          </div>
-          <div>
-            <p class="text-brand-gold font-serif text-3xl">4</p>
-            <p class="text-white/40 text-xs uppercase tracking-wide mt-1">Bathrooms</p>
-          </div>
-          <div>
-            <p class="text-brand-gold font-serif text-3xl">620</p>
-            <p class="text-white/40 text-xs uppercase tracking-wide mt-1">Sqm Land</p>
-          </div>
-        </div>
-
-        <p class="text-white font-serif text-3xl mb-8">$12,500,000</p>
-        <button class="btn-primary" onclick="document.getElementById('enquire').scrollIntoView({behavior:'smooth'})">
-          <span>Enquire About This Property</span>
-        </button>
+        <div class="h-8 skeleton rounded w-3/4 mb-4 opacity-30"></div>
+        <div class="h-4 skeleton rounded w-full mb-2 opacity-20"></div>
+        <div class="h-4 skeleton rounded w-2/3 mb-8 opacity-20"></div>
       </div>
-
-      <!-- Right — carousel -->
       <div class="md:w-3/5 reveal" style="transition-delay:.15s">
         <div class="relative rounded-lg overflow-hidden" style="aspect-ratio:4/3">
           <div class="carousel-track h-full" id="carousel-track">
-            <div class="carousel-slide h-full">
-              <img class="w-full h-full object-cover" src="assets/images/listing-detail-hero.jpg" alt="42 Oceanview Crest exterior"/>
-            </div>
-            <div class="carousel-slide h-full">
-              <img class="w-full h-full object-cover" src="assets/images/listing-interior-1.jpg" alt="Living room"/>
-            </div>
-            <div class="carousel-slide h-full">
-              <img class="w-full h-full object-cover" src="assets/images/listing-interior-2.jpg" alt="Dining room"/>
-            </div>
-            <div class="carousel-slide h-full">
-              <img class="w-full h-full object-cover" src="assets/images/listing-interior-3.jpg" alt="Master bedroom"/>
-            </div>
+            <div class="carousel-slide h-full bg-brand-navy/50 skeleton"></div>
           </div>
-          <!-- Gradient overlay -->
           <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/30 to-transparent pointer-events-none"></div>
         </div>
-
-        <!-- Carousel controls -->
         <div class="flex items-center justify-between mt-6">
-          <div class="flex gap-2" id="carousel-dots">
-            <div class="carousel-dot active" onclick="goToSlide(0)"></div>
-            <div class="carousel-dot" onclick="goToSlide(1)"></div>
-            <div class="carousel-dot" onclick="goToSlide(2)"></div>
-            <div class="carousel-dot" onclick="goToSlide(3)"></div>
-          </div>
+          <div class="flex gap-2" id="carousel-dots"></div>
           <div class="flex gap-3">
-            <button class="carousel-btn" onclick="prevSlide()" aria-label="Previous">
-              <span class="material-symbols-outlined" style="font-size:20px">arrow_back</span>
-            </button>
-            <button class="carousel-btn" onclick="nextSlide()" aria-label="Next">
-              <span class="material-symbols-outlined" style="font-size:20px">arrow_forward</span>
-            </button>
+            <button class="carousel-btn" onclick="prevSlide()" aria-label="Previous"><span class="material-symbols-outlined" style="font-size:20px">arrow_back</span></button>
+            <button class="carousel-btn" onclick="nextSlide()" aria-label="Next"><span class="material-symbols-outlined" style="font-size:20px">arrow_forward</span></button>
           </div>
         </div>
       </div>
@@ -748,144 +418,44 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     INTERACTIVE FLOOR PLAN
-═══════════════════════════════════════════ -->
+<!-- FLOOR PLAN — DYNAMIC -->
 <section id="about" class="py-24 bg-brand-cream">
   <div class="max-w-screen-2xl mx-auto px-6 md:px-10">
     <div class="flex flex-col md:flex-row gap-16 items-start">
-
-      <!-- Left — floor plan -->
       <div class="md:w-1/2 reveal">
-        <p class="section-label mb-4">42 Oceanview Crest · Ground Floor</p>
+        <p class="section-label mb-4" id="floorplan-label">Loading…</p>
         <h2 class="text-3xl md:text-4xl font-serif text-brand-navy mb-8">Interactive Floor Plan</h2>
-
         <div class="relative bg-white rounded-lg border border-brand-gold/20 shadow-xl overflow-hidden" style="aspect-ratio:4/3;padding:24px">
-          <!-- SVG grid lines for architectural feel -->
-          <svg class="absolute inset-0 w-full h-full" style="opacity:0.04" xmlns="http://www.w3.org/2000/svg">
-            <defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1B2A4A" stroke-width="0.5"/></pattern></defs>
+          <svg class="absolute inset-0 w-full h-full" style="opacity:.04" xmlns="http://www.w3.org/2000/svg">
+            <defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1B2A4A" stroke-width=".5"/></pattern></defs>
             <rect width="100%" height="100%" fill="url(#grid)"/>
           </svg>
-
-          <!-- Compass -->
-          <div class="absolute top-3 right-3 text-center" style="font-size:10px;color:var(--gold);font-family:Manrope;font-weight:700">
-            <div>N</div>
-            <div style="font-size:16px;line-height:1">↑</div>
-          </div>
-
-          <!-- Scale bar -->
+          <div class="absolute top-3 right-3 text-center" style="font-size:10px;color:var(--gold);font-family:Manrope;font-weight:700"><div>N</div><div style="font-size:16px;line-height:1">↑</div></div>
           <div class="absolute bottom-3 left-3 flex items-center gap-2" style="font-size:9px;color:#888;font-family:Manrope">
             <div style="width:40px;height:3px;background:linear-gradient(to right,#1B2A4A 50%,white 50%);border:1px solid #ccc"></div>
             <span>5m</span>
           </div>
-
-          <!-- Interactive rooms -->
-          <div class="absolute inset-6">
-
-            <div class="floor-plan-room" style="left:0%;top:0%;width:42%;height:45%" data-room="Master Suite" data-area="48 sqm" data-features="Ensuite · Walk-in Robe · Harbour Views">
-              <div class="room-label">Master<br/>Suite</div>
-              <div class="room-tooltip">Master Suite · 48 sqm<br/><span style="opacity:0.7;font-size:10px">Ensuite · Walk-in Robe</span></div>
-            </div>
-
-            <div class="floor-plan-room" style="left:44%;top:0%;width:28%;height:45%" data-room="Bedroom 2" data-area="22 sqm" data-features="Built-in Robes · Garden Views">
-              <div class="room-label">Bed 2</div>
-              <div class="room-tooltip">Bedroom 2 · 22 sqm</div>
-            </div>
-
-            <div class="floor-plan-room" style="left:74%;top:0%;width:26%;height:45%" data-room="Bedroom 3" data-area="20 sqm" data-features="Built-in Robes">
-              <div class="room-label">Bed 3</div>
-              <div class="room-tooltip">Bedroom 3 · 20 sqm</div>
-            </div>
-
-            <div class="floor-plan-room" style="left:0%;top:47%;width:55%;height:53%" data-room="Living & Dining" data-area="72 sqm" data-features="Harbour Views · Opens to Terrace">
-              <div class="room-label">Living &<br/>Dining</div>
-              <div class="room-tooltip">Living & Dining · 72 sqm<br/><span style="opacity:0.7;font-size:10px">Opens to Terrace</span></div>
-            </div>
-
-            <div class="floor-plan-room" style="left:57%;top:47%;width:43%;height:30%" data-room="Kitchen" data-area="35 sqm" data-features="Stone Benchtops · Butler's Pantry">
-              <div class="room-label">Kitchen</div>
-              <div class="room-tooltip">Kitchen · 35 sqm<br/><span style="opacity:0.7;font-size:10px">Butler's Pantry</span></div>
-            </div>
-
-            <div class="floor-plan-room" style="left:57%;top:79%;width:25%;height:21%" data-room="Study" data-area="14 sqm" data-features="Harbour Views">
-              <div class="room-label">Study</div>
-              <div class="room-tooltip">Study · 14 sqm</div>
-            </div>
-
-            <div class="floor-plan-room" style="left:84%;top:79%;width:16%;height:21%" data-room="Bathroom" data-area="9 sqm" data-features="Full Bath">
-              <div class="room-label">Bath</div>
-              <div class="room-tooltip">Bathroom · 9 sqm</div>
-            </div>
-
-          </div>
+          <div class="absolute inset-6" id="floor-plan-rooms"></div>
         </div>
-
-        <!-- Room info panel -->
         <div id="room-info" class="mt-4 p-4 rounded-lg border border-brand-gold/20 bg-white transition-all duration-300" style="min-height:64px">
           <p class="text-brand-navy/40 text-sm font-sans italic">Hover over a room to see details</p>
         </div>
       </div>
 
-      <!-- Right — property specs -->
-      <div class="md:w-1/2 reveal" style="transition-delay:.2s">
+      <div class="md:w-1/2 reveal" style="transition-delay:.2s" id="property-specs">
         <p class="section-label mb-4">Property Details</p>
-        <h2 class="text-3xl md:text-4xl font-serif text-brand-navy mb-8">42 Oceanview Crest</h2>
-
-        <div class="space-y-4 mb-10">
-          <div class="flex justify-between items-center py-4 border-b border-brand-gold/15">
-            <span class="text-on-surface-variant font-sans text-sm">Property Type</span>
-            <span class="font-sans font-semibold text-brand-navy text-sm">Luxury Residence</span>
-          </div>
-          <div class="flex justify-between items-center py-4 border-b border-brand-gold/15">
-            <span class="text-on-surface-variant font-sans text-sm">Land Area</span>
-            <span class="font-sans font-semibold text-brand-navy text-sm">620 sqm</span>
-          </div>
-          <div class="flex justify-between items-center py-4 border-b border-brand-gold/15">
-            <span class="text-on-surface-variant font-sans text-sm">House Area</span>
-            <span class="font-sans font-semibold text-brand-navy text-sm">520 sqm</span>
-          </div>
-          <div class="flex justify-between items-center py-4 border-b border-brand-gold/15">
-            <span class="text-on-surface-variant font-sans text-sm">Year Built</span>
-            <span class="font-sans font-semibold text-brand-navy text-sm">2019</span>
-          </div>
-          <div class="flex justify-between items-center py-4 border-b border-brand-gold/15">
-            <span class="text-on-surface-variant font-sans text-sm">Aspect</span>
-            <span class="font-sans font-semibold text-brand-navy text-sm">North-East, Harbour Views</span>
-          </div>
-          <div class="flex justify-between items-center py-4 border-b border-brand-gold/15">
-            <span class="text-on-surface-variant font-sans text-sm">Council Rates</span>
-            <span class="font-sans font-semibold text-brand-navy text-sm">$4,800 / year</span>
-          </div>
-          <div class="flex justify-between items-center py-4">
-            <span class="text-on-surface-variant font-sans text-sm">Guide Price</span>
-            <span class="font-serif font-semibold text-brand-navy text-2xl">$12,500,000</span>
-          </div>
-        </div>
-
-        <!-- Agent card -->
-        <div class="flex items-center gap-5 p-5 rounded-lg border border-brand-gold/20 bg-white">
-          <img src="assets/images/agent-photo.jpg" alt="James Whitfield — Meridian Property Group" class="w-16 h-16 rounded-full object-cover object-top flex-shrink-0"/>
-          <div class="flex-1">
-            <p class="font-serif text-brand-navy text-lg">James Whitfield</p>
-            <p class="text-on-surface-variant text-xs font-sans mb-3">Principal Agent · North Shore Specialist</p>
-            <div class="flex gap-3">
-              <a href="tel:+61290000000" class="text-xs font-sans font-semibold text-brand-gold hover:text-brand-navy transition-colors flex items-center gap-1">
-                <span class="material-symbols-outlined" style="font-size:14px">call</span> Call
-              </a>
-              <a href="mailto:james@meridianpropertygroup.com.au" class="text-xs font-sans font-semibold text-brand-gold hover:text-brand-navy transition-colors flex items-center gap-1">
-                <span class="material-symbols-outlined" style="font-size:14px">mail</span> Email
-              </a>
-            </div>
-          </div>
+        <div class="h-8 skeleton rounded w-2/3 mb-8"></div>
+        <div class="space-y-2">
+          <div class="h-12 skeleton rounded"></div>
+          <div class="h-12 skeleton rounded"></div>
+          <div class="h-12 skeleton rounded"></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     ENQUIRE SECTION
-═══════════════════════════════════════════ -->
+<!-- ENQUIRE -->
 <section id="enquire" class="py-32 bg-brand-navy overflow-hidden relative">
   <div class="absolute top-0 right-0 w-1/3 h-full opacity-10" style="background:linear-gradient(135deg,var(--gold) 0%,transparent 60%);transform:skewX(-12deg) translateX(30%)"></div>
   <div class="max-w-screen-2xl mx-auto px-6 md:px-10 relative z-10">
@@ -894,25 +464,15 @@ tailwind.config = {
       <h2 class="text-4xl md:text-6xl font-serif text-white mb-8 leading-tight">Uncover the North Shore's<br/>hidden gems.</h2>
       <p class="text-white/50 text-lg mb-12 font-sans max-w-xl leading-relaxed">Join our private list to receive early access to off-market properties and quarterly market insights.</p>
       <form class="flex flex-col md:flex-row gap-4 max-w-xl" onsubmit="handleSubscribe(event)">
-        <input
-          class="flex-1 bg-white/8 border border-white/15 text-white placeholder:text-white/30 rounded px-6 py-4 font-sans text-sm"
-          placeholder="Your Email Address"
-          type="email"
-          required
-          style="background:rgba(255,255,255,0.07)"
-        />
-        <button type="submit" class="btn-primary">
-          <span>Subscribe</span>
-        </button>
+        <input class="flex-1 border border-white/15 text-white placeholder:text-white/30 rounded px-6 py-4 font-sans text-sm" placeholder="Your Email Address" type="email" required style="background:rgba(255,255,255,.07)"/>
+        <button type="submit" class="btn-primary"><span>Subscribe</span></button>
       </form>
       <p id="subscribe-msg" class="text-brand-gold text-sm font-sans mt-4 opacity-0 transition-opacity duration-300"></p>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     FOOTER
-═══════════════════════════════════════════ -->
+<!-- FOOTER -->
 <footer class="bg-slate-900 w-full border-t border-slate-800">
   <div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-6 md:px-10 py-20 max-w-screen-2xl mx-auto">
     <div class="col-span-1">
@@ -922,10 +482,10 @@ tailwind.config = {
     <div>
       <h4 class="text-white font-serif text-lg mb-6">Explore</h4>
       <ul class="space-y-4">
-        <li><a class="text-slate-400 hover:text-brand-gold transition-colors font-sans text-sm" href="#">Properties for Sale</a></li>
-        <li><a class="text-slate-400 hover:text-brand-gold transition-colors font-sans text-sm" href="#">Property Appraisal</a></li>
-        <li><a class="text-slate-400 hover:text-brand-gold transition-colors font-sans text-sm" href="#">Off-Market Listings</a></li>
-        <li><a class="text-slate-400 hover:text-brand-gold transition-colors font-sans text-sm" href="#">North Shore Suburbs</a></li>
+        <li><a class="text-slate-400 hover:text-brand-gold transition-colors font-sans text-sm" href="#listings">Properties for Sale</a></li>
+        <li><a class="text-slate-400 hover:text-brand-gold transition-colors font-sans text-sm" href="#enquire">Property Appraisal</a></li>
+        <li><a class="text-slate-400 hover:text-brand-gold transition-colors font-sans text-sm" href="#enquire">Off-Market Listings</a></li>
+        <li><a class="text-slate-400 hover:text-brand-gold transition-colors font-sans text-sm" href="#listings">North Shore Suburbs</a></li>
       </ul>
     </div>
     <div>
@@ -937,11 +497,9 @@ tailwind.config = {
         <li><a class="text-slate-400 hover:text-brand-gold transition-colors font-sans text-sm" href="#">Pymble</a></li>
       </ul>
     </div>
-    <div>
+    <div id="footer-office">
       <h4 class="text-white font-serif text-lg mb-6">Office</h4>
-      <address class="text-slate-400 font-sans text-sm mb-4 leading-relaxed not-italic">
-        124 Military Road<br/>Neutral Bay, NSW 2089<br/>Australia
-      </address>
+      <address class="text-slate-400 font-sans text-sm mb-4 leading-relaxed not-italic">124 Military Road<br/>Neutral Bay, NSW 2089<br/>Australia</address>
       <a href="tel:+61290000000" class="text-brand-gold font-sans text-sm block mb-2 hover:text-white transition-colors">(02) 9000 0000</a>
       <a href="mailto:hello@meridianpropertygroup.com.au" class="text-brand-gold font-sans text-sm hover:text-white transition-colors">hello@meridianproperty.com.au</a>
     </div>
@@ -958,115 +516,147 @@ tailwind.config = {
   </div>
 </footer>
 
-<!-- ═══════════════════════════════════════════
-     JAVASCRIPT
-═══════════════════════════════════════════ -->
 <script>
-// ── CUSTOM CURSOR ──
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursor-ring');
-let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+// ─── DATA LAYER ─────────────────────────────────────────────────────────────
+let DATA = null;
 
-document.addEventListener('mousemove', e => {
-  mouseX = e.clientX; mouseY = e.clientY;
-  cursor.style.left = mouseX + 'px';
-  cursor.style.top = mouseY + 'px';
-});
-
-function animateRing() {
-  ringX += (mouseX - ringX) * 0.12;
-  ringY += (mouseY - ringY) * 0.12;
-  ring.style.left = ringX + 'px';
-  ring.style.top = ringY + 'px';
-  requestAnimationFrame(animateRing);
+async function loadData() {
+  try {
+    const res = await fetch('listings.json');
+    DATA = await res.json();
+    init();
+  } catch(e) {
+    console.error('Could not load listings.json', e);
+  }
 }
-animateRing();
 
-document.querySelectorAll('a, button, .floor-plan-room, .property-card').forEach(el => {
-  el.addEventListener('mouseenter', () => { cursor.classList.add('hover'); ring.classList.add('hover'); });
-  el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); ring.classList.remove('hover'); });
-});
+function init() {
+  renderActiveListings();
+  renderSoldListings();
+  renderFeatured();
+  renderFloorPlan();
+  renderPropertySpecs();
+}
 
-// ── SCROLL PROGRESS ──
-const progressBar = document.getElementById('scroll-progress');
-window.addEventListener('scroll', () => {
-  const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-  progressBar.style.transform = `scaleX(${pct})`;
-});
+// ─── BADGE COLOURS ────────────────────────────────────────────────────────
+function badgeClasses(badge) {
+  if (!badge) return '';
+  const lower = badge.toLowerCase();
+  if (lower.includes('exclusive')) return 'bg-brand-gold text-brand-navy';
+  if (lower.includes('sold'))      return 'bg-red-700 text-white';
+  return 'bg-brand-navy text-white';
+}
 
-// ── PARALLAX ──
-const parallaxContainer = document.getElementById('parallax-container');
-window.addEventListener('scroll', () => {
-  const offset = window.scrollY * 0.3;
-  if (parallaxContainer) parallaxContainer.style.transform = `translateY(${offset}px)`;
-}, { passive: true });
+// ─── ACTIVE LISTINGS GRID ────────────────────────────────────────────────
+function renderActiveListings() {
+  const active = DATA.listings.filter(l => l.status === 'active');
+  const grid = document.getElementById('active-listings-grid');
+  grid.innerHTML = active.map((l, i) => `
+    <article class="property-card bg-white rounded-lg overflow-hidden reveal" style="transition-delay:${i * 0.1}s">
+      <a href="listing.html?id=${l.id}">
+        <div class="aspect-[4/5] overflow-hidden relative">
+          <img class="card-img w-full h-full object-cover" alt="${l.beds} bedroom home ${l.suburb}" src="${l.cardImage}" onerror="this.style.background='#e8e3de'"/>
+          <div class="card-overlay absolute inset-0 bg-gradient-to-t from-brand-navy/70 to-transparent flex items-end p-6">
+            <button class="bg-brand-gold text-brand-navy text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wide">View Property</button>
+          </div>
+          ${l.badge ? `<div class="absolute top-4 left-4 px-3 py-1 text-xs uppercase tracking-widest font-semibold rounded ${badgeClasses(l.badge)}">${l.badge}</div>` : ''}
+        </div>
+        <div class="p-7">
+          <p class="section-label mb-2">${l.suburb}</p>
+          <h3 class="text-2xl font-serif text-brand-navy mb-4">${l.address}</h3>
+          <div class="flex items-center gap-5 text-on-surface-variant mb-5 pb-5 border-b border-surface-high text-sm">
+            <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">bed</span><span>${l.beds}</span></div>
+            <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">bathtub</span><span>${l.baths}</span></div>
+            <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">directions_car</span><span>${l.cars}</span></div>
+          </div>
+          <p class="text-2xl font-serif text-brand-navy">${l.price}</p>
+        </div>
+      </a>
+    </article>
+  `).join('');
 
-// ── NAV SCROLL BEHAVIOUR ──
-const navbar = document.getElementById('navbar');
-const navLogo = document.getElementById('nav-logo');
-const navLinks = ['nav-link-1','nav-link-2','nav-link-3'].map(id => document.getElementById(id));
-const stickyBtn = document.getElementById('sticky-cta');
-
-window.addEventListener('scroll', () => {
-  const scrolled = window.scrollY > 80;
-  navbar.classList.toggle('scrolled', scrolled);
-  navLogo.style.color = scrolled ? '#1B2A4A' : 'white';
-  navLinks.forEach(l => { if(l) l.style.color = scrolled ? '#45464e' : 'rgba(255,255,255,0.8)'; });
-  stickyBtn.classList.toggle('visible', window.scrollY > 500);
-}, { passive: true });
-
-// ── TILE + HERO LOAD ANIMATION ──
-window.addEventListener('load', () => {
-  const tiles = document.querySelectorAll('.mosaic-tile');
-  tiles.forEach((t, i) => setTimeout(() => t.classList.add('visible'), i * 55));
-  setTimeout(() => document.querySelector('.hero-image')?.classList.add('visible'), 80);
-  setTimeout(() => document.querySelectorAll('.hero-word').forEach(w => w.classList.add('visible')), 500);
-  setTimeout(() => document.querySelectorAll('.hero-sub').forEach(s => s.classList.add('visible')), 500);
-  setTimeout(() => document.getElementById('featured-badge')?.classList.add('visible'), 1100);
-});
-
-// ── SCROLL REVEAL ──
-const revealObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      if (e.target.classList.contains('gold-line')) e.target.classList.add('visible');
-      revealObs.unobserve(e.target);
-    }
+  // Re-attach observers for newly rendered elements
+  document.querySelectorAll('#active-listings-grid .reveal').forEach(el => revealObs.observe(el));
+  document.querySelectorAll('#active-listings-grid .property-card, #active-listings-grid a, #active-listings-grid button').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.classList.add('hover'); ring.classList.add('hover'); });
+    el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); ring.classList.remove('hover'); });
   });
-}, { threshold: 0.12 });
+}
 
-document.querySelectorAll('.reveal, .gold-line').forEach(el => revealObs.observe(el));
+// ─── SOLD LISTINGS ────────────────────────────────────────────────────────
+function renderSoldListings() {
+  const sold = DATA.listings.filter(l => l.status === 'sold');
+  if (!sold.length) return;
 
-// ── STAT COUNTER ──
-const statObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    const el = e.target;
-    const target = parseFloat(el.dataset.target);
-    const prefix = el.dataset.prefix || '';
-    const suffix = el.dataset.suffix || '';
-    const isDecimal = target % 1 !== 0;
-    const duration = 1800;
-    const start = performance.now();
-    function tick(now) {
-      const pct = Math.min((now - start) / duration, 1);
-      const ease = 1 - Math.pow(1 - pct, 3);
-      const val = target * ease;
-      el.textContent = prefix + (isDecimal ? val.toFixed(1) : Math.floor(val)) + suffix;
-      if (pct < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-    statObs.unobserve(el);
-  });
-}, { threshold: 0.5 });
+  document.getElementById('sold-section').classList.remove('hidden');
+  const grid = document.getElementById('sold-listings-grid');
+  grid.innerHTML = sold.map((l, i) => `
+    <article class="property-card sold-card bg-white rounded-lg overflow-hidden reveal" style="transition-delay:${i * 0.1}s">
+      <div class="aspect-[4/5] overflow-hidden relative">
+        <img class="card-img w-full h-full object-cover grayscale" alt="${l.address}" src="${l.cardImage}" onerror="this.style.background='#e8e3de'"/>
+        <div class="absolute inset-0 flex items-center justify-content:center bg-brand-navy/65 flex items-center justify-center">
+          <span class="font-serif text-3xl text-brand-gold tracking-widest">Sold</span>
+        </div>
+      </div>
+      <div class="p-7">
+        <p class="section-label mb-2">${l.suburb}</p>
+        <h3 class="text-2xl font-serif text-brand-navy mb-4">${l.address}</h3>
+        <div class="flex items-center gap-5 text-on-surface-variant mb-5 pb-5 border-b border-surface-high text-sm">
+          <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">bed</span><span>${l.beds}</span></div>
+          <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">bathtub</span><span>${l.baths}</span></div>
+          <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">directions_car</span><span>${l.cars}</span></div>
+        </div>
+        <p class="text-2xl font-serif text-brand-navy">${l.price}</p>
+      </div>
+    </article>
+  `).join('');
 
-document.querySelectorAll('.stat-num[data-target]').forEach(el => statObs.observe(el));
+  document.querySelectorAll('#sold-listings-grid .reveal').forEach(el => revealObs.observe(el));
+}
 
-// ── CAROUSEL ──
+// ─── FEATURED PROPERTY ────────────────────────────────────────────────────
 let currentSlide = 0;
-const totalSlides = 4;
+let totalSlides = 1;
 let carouselTimer;
+
+function renderFeatured() {
+  const featured = DATA.listings.find(l => l.id === DATA.featured && l.status !== 'unlisted')
+    || DATA.listings.find(l => l.status === 'active');
+  if (!featured) return;
+
+  const agent = DATA.agent;
+  totalSlides = featured.images.length;
+
+  // Text panel
+  document.getElementById('featured-text').innerHTML = `
+    <p class="section-label mb-4">Featured Property</p>
+    <h2 class="text-4xl md:text-5xl font-serif text-white mb-6 leading-tight">${featured.address},<br/>${featured.suburb}</h2>
+    <p class="text-white/50 font-sans text-sm leading-relaxed mb-8">${featured.description[0]}</p>
+    <div class="grid grid-cols-3 gap-6 mb-10">
+      <div><p class="text-brand-gold font-serif text-3xl">${featured.beds}</p><p class="text-white/40 text-xs uppercase tracking-wide mt-1">Bedrooms</p></div>
+      <div><p class="text-brand-gold font-serif text-3xl">${featured.baths}</p><p class="text-white/40 text-xs uppercase tracking-wide mt-1">Bathrooms</p></div>
+      <div><p class="text-brand-gold font-serif text-3xl">${featured.land}</p><p class="text-white/40 text-xs uppercase tracking-wide mt-1">Sqm Land</p></div>
+    </div>
+    <p class="text-white font-serif text-3xl mb-8">${featured.price}</p>
+    <a href="listing.html?id=${featured.id}" class="btn-primary inline-flex"><span>View This Property</span><span class="material-symbols-outlined mat-icon" style="font-size:20px">arrow_forward</span></a>
+  `;
+
+  // Carousel slides
+  const track = document.getElementById('carousel-track');
+  track.innerHTML = featured.images.map((img, i) => `
+    <div class="carousel-slide h-full">
+      <img class="w-full h-full object-cover" src="${img}" alt="${featured.address} — photo ${i+1}" onerror="this.style.background='#1B2A4A'"/>
+    </div>
+  `).join('');
+
+  // Dots
+  const dotsEl = document.getElementById('carousel-dots');
+  dotsEl.innerHTML = featured.images.map((_, i) =>
+    `<div class="carousel-dot${i===0?' active':''}" onclick="goToSlide(${i})"></div>`
+  ).join('');
+
+  resetTimer();
+}
 
 function goToSlide(n) {
   currentSlide = (n + totalSlides) % totalSlides;
@@ -1080,11 +670,10 @@ function resetTimer() {
   clearInterval(carouselTimer);
   carouselTimer = setInterval(nextSlide, 5000);
 }
-resetTimer();
 
-// Touch swipe support
-let touchStartX = 0;
+// Touch support
 const track = document.getElementById('carousel-track');
+let touchStartX = 0;
 if (track) {
   track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
   track.addEventListener('touchend', e => {
@@ -1093,36 +682,195 @@ if (track) {
   });
 }
 
-// ── FLOOR PLAN ──
-document.querySelectorAll('.floor-plan-room').forEach(room => {
-  room.addEventListener('click', () => {
-    document.querySelectorAll('.floor-plan-room').forEach(r => r.classList.remove('active'));
-    room.classList.add('active');
-    const info = document.getElementById('room-info');
-    const name = room.dataset.room;
-    const area = room.dataset.area;
-    const features = room.dataset.features;
-    info.innerHTML = `
-      <div class="flex items-start justify-between">
-        <div>
-          <p class="font-serif text-brand-navy text-lg">${name}</p>
-          <p class="text-on-surface-variant text-xs font-sans mt-1">${features}</p>
-        </div>
-        <p class="text-brand-gold font-serif text-xl">${area}</p>
-      </div>`;
+// ─── FLOOR PLAN ──────────────────────────────────────────────────────────
+function renderFloorPlan() {
+  const featured = DATA.listings.find(l => l.id === DATA.featured && l.status !== 'unlisted')
+    || DATA.listings.find(l => l.status === 'active');
+  if (!featured || !featured.floorPlan) return;
+
+  document.getElementById('floorplan-label').textContent = `${featured.address} · Ground Floor`;
+
+  const container = document.getElementById('floor-plan-rooms');
+  container.innerHTML = featured.floorPlan.map(room => `
+    <div class="floor-plan-room"
+      style="left:${room.left};top:${room.top};width:${room.width};height:${room.height}"
+      data-room="${room.name}" data-area="${room.area}" data-features="${room.features}">
+      <div class="room-label">${room.name.replace(' & ', ' &<br/>')}</div>
+      <div class="room-tooltip">${room.name} · ${room.area}<br/><span style="opacity:.7;font-size:10px">${room.features}</span></div>
+    </div>
+  `).join('');
+
+  container.querySelectorAll('.floor-plan-room').forEach(room => {
+    room.addEventListener('click', () => {
+      container.querySelectorAll('.floor-plan-room').forEach(r => r.classList.remove('active'));
+      room.classList.add('active');
+      const info = document.getElementById('room-info');
+      info.innerHTML = `
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="font-serif text-brand-navy text-lg">${room.dataset.room}</p>
+            <p class="text-on-surface-variant text-xs font-sans mt-1">${room.dataset.features}</p>
+          </div>
+          <p class="text-brand-gold font-serif text-xl">${room.dataset.area}</p>
+        </div>`;
+    });
+    room.addEventListener('mouseenter', () => { cursor.classList.add('hover'); ring.classList.add('hover'); });
+    room.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); ring.classList.remove('hover'); });
   });
+}
+
+// ─── PROPERTY SPECS ───────────────────────────────────────────────────────
+function renderPropertySpecs() {
+  const featured = DATA.listings.find(l => l.id === DATA.featured && l.status !== 'unlisted')
+    || DATA.listings.find(l => l.status === 'active');
+  const agent = DATA.agent;
+  if (!featured) return;
+
+  const specs = [
+    ['Property Type', 'Luxury Residence'],
+    ['Land Area', `${featured.land} sqm`],
+    ['House Area', `${featured.house} sqm`],
+    ['Year Built', featured.yearBuilt],
+    ['Aspect', featured.aspect],
+    ['Council Rates', featured.councilRates],
+  ];
+
+  document.getElementById('property-specs').innerHTML = `
+    <p class="section-label mb-4">Property Details</p>
+    <h2 class="text-3xl md:text-4xl font-serif text-brand-navy mb-8">${featured.address}</h2>
+    <div class="space-y-4 mb-10">
+      ${specs.map(([label, val]) => `
+        <div class="flex justify-between items-center py-4 border-b border-brand-gold/15">
+          <span class="text-on-surface-variant font-sans text-sm">${label}</span>
+          <span class="font-sans font-semibold text-brand-navy text-sm">${val}</span>
+        </div>
+      `).join('')}
+      <div class="flex justify-between items-center py-4">
+        <span class="text-on-surface-variant font-sans text-sm">Guide Price</span>
+        <span class="font-serif font-semibold text-brand-navy text-2xl">${featured.price}</span>
+      </div>
+    </div>
+    <div class="flex items-center gap-5 p-5 rounded-lg border border-brand-gold/20 bg-white">
+      <img src="${agent.photo}" alt="${agent.name}" class="w-16 h-16 rounded-full object-cover object-top flex-shrink-0" onerror="this.style.background='#e8e3de'"/>
+      <div class="flex-1">
+        <p class="font-serif text-brand-navy text-lg">${agent.name}</p>
+        <p class="text-on-surface-variant text-xs font-sans mb-3">${agent.title}</p>
+        <div class="flex gap-3">
+          <a href="tel:${agent.phone}" class="text-xs font-sans font-semibold text-brand-gold hover:text-brand-navy transition-colors flex items-center gap-1">
+            <span class="material-symbols-outlined" style="font-size:14px">call</span> Call
+          </a>
+          <a href="mailto:${agent.email}" class="text-xs font-sans font-semibold text-brand-gold hover:text-brand-navy transition-colors flex items-center gap-1">
+            <span class="material-symbols-outlined" style="font-size:14px">mail</span> Email
+          </a>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ─── CURSOR ──────────────────────────────────────────────────────────────
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mouseX=0,mouseY=0,ringX=0,ringY=0;
+
+document.addEventListener('mousemove', e => {
+  mouseX=e.clientX; mouseY=e.clientY;
+  cursor.style.left=mouseX+'px'; cursor.style.top=mouseY+'px';
+});
+function animateRing(){
+  ringX+=(mouseX-ringX)*.12; ringY+=(mouseY-ringY)*.12;
+  ring.style.left=ringX+'px'; ring.style.top=ringY+'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+function addHover(selector){
+  document.querySelectorAll(selector).forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cursor.classList.add('hover');ring.classList.add('hover');});
+    el.addEventListener('mouseleave',()=>{cursor.classList.remove('hover');ring.classList.remove('hover');});
+  });
+}
+addHover('a,button,.property-card');
+
+// ─── SCROLL PROGRESS ─────────────────────────────────────────────────────
+const progressBar = document.getElementById('scroll-progress');
+window.addEventListener('scroll',()=>{
+  const pct=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight);
+  progressBar.style.transform=`scaleX(${pct})`;
+},{passive:true});
+
+// ─── PARALLAX ────────────────────────────────────────────────────────────
+const parallaxContainer=document.getElementById('parallax-container');
+window.addEventListener('scroll',()=>{
+  if(parallaxContainer) parallaxContainer.style.transform=`translateY(${window.scrollY*.3}px)`;
+},{passive:true});
+
+// ─── NAV ─────────────────────────────────────────────────────────────────
+const navbar=document.getElementById('navbar');
+const navLogo=document.getElementById('nav-logo');
+const navLinks=['nav-link-1','nav-link-2','nav-link-3'].map(id=>document.getElementById(id));
+const stickyBtn=document.getElementById('sticky-cta');
+
+window.addEventListener('scroll',()=>{
+  const scrolled=window.scrollY>80;
+  navbar.classList.toggle('scrolled',scrolled);
+  navLogo.style.color=scrolled?'#1B2A4A':'white';
+  navLinks.forEach(l=>{if(l) l.style.color=scrolled?'#45464e':'rgba(255,255,255,0.8)';});
+  stickyBtn.classList.toggle('visible',window.scrollY>500);
+},{passive:true});
+
+// ─── LOAD ANIMATIONS ────────────────────────────────────────────────────
+window.addEventListener('load',()=>{
+  document.querySelectorAll('.mosaic-tile').forEach((t,i)=>setTimeout(()=>t.classList.add('visible'),i*55));
+  setTimeout(()=>document.querySelector('.hero-image')?.classList.add('visible'),80);
+  setTimeout(()=>document.querySelectorAll('.hero-word').forEach(w=>w.classList.add('visible')),500);
+  setTimeout(()=>document.querySelectorAll('.hero-sub').forEach(s=>s.classList.add('visible')),500);
+  setTimeout(()=>document.getElementById('featured-badge')?.classList.add('visible'),1100);
 });
 
-// ── SUBSCRIBE ──
-function handleSubscribe(e) {
-  e.preventDefault();
-  const msg = document.getElementById('subscribe-msg');
-  msg.textContent = '✓ You\'re on the list. We\'ll be in touch with exclusive listings soon.';
-  msg.style.opacity = '1';
-  e.target.reset();
-  setTimeout(() => { msg.style.opacity = '0'; }, 5000);
-}
-</script>
+// ─── SCROLL REVEAL ───────────────────────────────────────────────────────
+const revealObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target);}
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal,.gold-line').forEach(el=>revealObs.observe(el));
 
+// ─── STAT COUNTER ────────────────────────────────────────────────────────
+const statObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting) return;
+    const el=e.target;
+    const target=parseFloat(el.dataset.target);
+    const prefix=el.dataset.prefix||'';
+    const suffix=el.dataset.suffix||'';
+    const isDecimal=target%1!==0;
+    const duration=1800; const start=performance.now();
+    function tick(now){
+      const pct=Math.min((now-start)/duration,1);
+      const ease=1-Math.pow(1-pct,3);
+      const val=target*ease;
+      el.textContent=prefix+(isDecimal?val.toFixed(1):Math.floor(val))+suffix;
+      if(pct<1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+    statObs.unobserve(el);
+  });
+},{threshold:.5});
+document.querySelectorAll('.stat-num[data-target]').forEach(el=>statObs.observe(el));
+
+// ─── SUBSCRIBE ───────────────────────────────────────────────────────────
+function handleSubscribe(e){
+  e.preventDefault();
+  const msg=document.getElementById('subscribe-msg');
+  msg.textContent="✓ You're on the list. We'll be in touch with exclusive listings soon.";
+  msg.style.opacity='1';
+  e.target.reset();
+  setTimeout(()=>{msg.style.opacity='0';},5000);
+}
+
+// ─── BOOT ────────────────────────────────────────────────────────────────
+loadData();
+</script>
 </body>
 </html>
