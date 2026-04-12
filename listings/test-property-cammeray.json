@@ -17,7 +17,7 @@
   "hero": "/assets/images/listings/cammeray-exterio.jpg",
   "cardImage": "/assets/images/listings/cammeray-exterio.jpg",
   "images": [
-    "assets/images/listings/cammeray-exterior.jpg",
+    "/assets/images/listings/cammeray-pool.jpg",
     "/assets/images/listings/cammeray-exterio.jpg"
   ],
   "description": [
