@@ -162,7 +162,7 @@ nav.scrolled{background:rgba(249,246,240,.97)!important;box-shadow:0 1px 24px rg
       <div class="mosaic-tile bg-brand-navy border-[0.5px] border-white/5" style="transition-delay:.40s"></div>
     </div>
     <div class="relative flex-1 h-full">
-      <img class="hero-image w-full h-full object-cover" alt="Luxury North Shore home" src="assets/images/hero-home.jpg"/>
+      <img class="hero-image w-full h-full object-cover" alt="Luxury North Shore home" src="assets/images/hero-home.jpg" fetchpriority="high" loading="eager"/>
       <div class="absolute inset-0 bg-brand-navy/40 lg:bg-transparent">
         <div class="hidden lg:grid grid-cols-4 grid-rows-5 h-full w-1/2">
           <div class="mosaic-tile bg-brand-navy border-[0.5px] border-white/5" style="transition-delay:.44s"></div>
@@ -622,4 +622,3 @@ const statObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(!e.isInt
 document.querySelectorAll('.stat-num[data-target]').forEach(el=>statObs.observe(el));
 
 // ─── SUBSCRIBE ───────────────────────────────────────────────
-function handleSubscribe(e){e.preventDefault();const msg=document.getElementById('subscribe-msg');msg.textContent="✓ You're on the list. We'll be in touch with exclusive listings soon.";msg.style.opacity='1';e.target.re
