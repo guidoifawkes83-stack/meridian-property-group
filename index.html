@@ -620,5 +620,4 @@ document.querySelectorAll('.reveal,.gold-line').forEach(el=>revealObs.observe(el
 // ─── STAT COUNTER ────────────────────────────────────────────
 const statObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,target=parseFloat(el.dataset.target),prefix=el.dataset.prefix||'',suffix=el.dataset.suffix||'',isDecimal=target%1!==0,duration=1800,start=performance.now();function tick(now){const pct=Math.min((now-start)/duration,1),ease=1-Math.pow(1-pct,3),val=target*ease;el.textContent=prefix+(isDecimal?val.toFixed(1):Math.floor(val))+suffix;if(pct<1)requestAnimationFrame(tick);}requestAnimationFrame(tick);statObs.unobserve(el);});},{threshold:.5});
 document.querySelectorAll('.stat-num[data-target]').forEach(el=>statObs.observe(el));
-
-// ─── SUBSCRIBE ───────────────────────────────────────────────
+</script>
