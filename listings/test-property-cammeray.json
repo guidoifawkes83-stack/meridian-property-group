@@ -15,10 +15,12 @@
   "price": "$3,200,000",
   "priceRaw": 3200000,
   "hero": "/assets/images/listings/cammeray-exterio.jpg",
-  "cardImage": "/assets/images/listings/cammeray-exterio.jpg",
+  "cardImage": "/assets/images/listings/cammeray-pool.jpg",
   "images": [
-    "assets/images/listings/cammeray-exterior.jpg",
-    "/assets/images/listings/cammeray-exterio.jpg"
+    "/assets/images/listings/cammeray-pool.jpg",
+    "/assets/images/listings/cammeray-exterio.jpg",
+    "/assets/images/listings/kurraba-pool.jpg",
+    "/assets/images/listings/milson-garden.jpg"
   ],
   "description": [
     "A stunning four-bedroom residence in one of Cammeray's most sought-after streets, offering exceptional proportions and effortless indoor-outdoor living.",
