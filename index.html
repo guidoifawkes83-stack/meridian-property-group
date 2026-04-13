@@ -318,13 +318,12 @@ nav.scrolled{background:rgba(249,246,240,.97)!important;box-shadow:0 1px 24px rg
   <div class="max-w-screen-2xl mx-auto px-6 md:px-10 relative z-10">
     <div class="max-w-3xl reveal">
       <p class="section-label mb-4">Get in Touch</p>
-      <h2 class="text-4xl md:text-6xl font-serif text-white mb-8 leading-tight">Uncover the North Shore's<br/>hidden gems.</h2>
-      <p class="text-white/50 text-lg mb-12 font-sans max-w-xl leading-relaxed">Join our private list to receive early access to off-market properties and quarterly market insights.</p>
-      <form class="flex flex-col md:flex-row gap-4 max-w-xl" onsubmit="handleSubscribe(event)">
-        <input class="flex-1 border border-white/15 text-white placeholder:text-white/30 rounded px-6 py-4 font-sans text-sm" placeholder="Your Email Address" type="email" required style="background:rgba(255,255,255,.07)"/>
-        <button type="submit" class="btn-primary"><span>Subscribe</span></button>
-      </form>
-      <p id="subscribe-msg" class="text-brand-gold text-sm font-sans mt-4 opacity-0 transition-opacity duration-300"></p>
+      <h2 class="text-4xl md:text-6xl font-serif text-white mb-8 leading-tight">Book a Viewing.<br/>We'll handle the rest.</h2>
+      <p class="text-white/50 text-lg mb-12 font-sans max-w-xl leading-relaxed">Tell us what you're looking for and James will be in touch within minutes — day or night.</p>
+      <!-- Tally Enquiry Form -->
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:32px;">
+        <iframe data-tally-src="https://tally.so/embed/RGJgDj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="491" frameborder="0" marginheight="0" marginwidth="0" title="Meridian Property Group — Property Enquiry"></iframe>
+      </div>
     </div>
   </div>
 </section>
@@ -335,12 +334,14 @@ nav.scrolled{background:rgba(249,246,240,.97)!important;box-shadow:0 1px 24px rg
     <div class="col-span-1"><div class="font-serif text-3xl text-brand-gold mb-6">Meridian</div><p class="text-slate-400 font-sans text-sm leading-relaxed">Setting the standard for luxury real estate on Sydney's North Shore. Precision, passion, and unparalleled service since 2015.</p></div>
     <div><h4 class="text-white font-serif text-lg mb-6">Explore</h4><ul class="space-y-4"><li><a class="text-slate-400 hover:text-brand-gold transition-colors font-sans text-sm" href="#listings">Properties for Sale</a></li><li><a class="text-slate-400 hover:text-brand-gold transition-colors font-sans text-sm" href="#enquire">Property Appraisal</a></li><li><a class="text-slate-400 hover:text-brand-gold transition-colors font-sans text-sm" href="#enquire">Off-Market Listings</a></li></ul></div>
     <div><h4 class="text-white font-serif text-lg mb-6">Suburbs We Serve</h4><ul class="space-y-4"><li><a class="text-slate-400 hover:text-brand-gold transition-colors font-sans text-sm" href="#">Mosman</a></li><li><a class="text-slate-400 hover:text-brand-gold transition-colors font-sans text-sm" href="#">Neutral Bay</a></li><li><a class="text-slate-400 hover:text-brand-gold transition-colors font-sans text-sm" href="#">Cremorne Point</a></li><li><a class="text-slate-400 hover:text-brand-gold transition-colors font-sans text-sm" href="#">Pymble</a></li></ul></div>
-    <div id="footer-office"><h4 class="text-white font-serif text-lg mb-6">Office</h4><address class="text-slate-400 font-sans text-sm mb-4 leading-relaxed not-italic">124 Military Road<br/>Neutral Bay, NSW 2089<br/>Australia</address><a href="tel:+61290000000" class="text-brand-gold font-sans text-sm block mb-2 hover:text-white transition-colors">(02) 9000 0000</a><a href="mailto:hello@meridianpropertygroup.com.au" class="text-brand-gold font-sans text-sm hover:text-white transition-colors">hello@meridianproperty.com.au</a></div>
+    <div id="footer-office"><h4 class="text-white font-serif text-lg mb-6">Office</h4><address class="text-slate-400 font-sans text-sm mb-4 leading-relaxed not-italic">124 Military Road<br/>Neutral Bay, NSW 2089<br/>Australia</address><a href="tel:+61290000000" class="text-brand-gold font-sans text-sm block mb-2 hover:text-white transition-colors">(02) 9000 0000</a><a href="/cdn-cgi/l/email-protection#96fef3fafaf9d6fbf3e4fff2fff7f8e6e4f9e6f3e4e2eff1e4f9e3e6b8f5f9fbb8f7e3" class="text-brand-gold font-sans text-sm hover:text-white transition-colors"><span class="__cf_email__" data-cfemail="630b060f0f0c230e06110a070a020d13110c130611171a4d000c0e4d0216">[email&#160;protected]</span></a></div>
   </div>
   <div class="max-w-screen-2xl mx-auto px-6 md:px-10 pb-10"><div class="pt-10 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4"><p class="text-slate-500 text-xs font-sans">© 2026 Meridian Property Group. All rights reserved. Licensed Real Estate Agent NSW.</p><div class="flex gap-8"><a class="text-slate-500 text-xs font-sans uppercase tracking-widest hover:text-brand-gold transition-colors" href="#">Facebook</a><a class="text-slate-500 text-xs font-sans uppercase tracking-widest hover:text-brand-gold transition-colors" href="#">Instagram</a><a class="text-slate-500 text-xs font-sans uppercase tracking-widest hover:text-brand-gold transition-colors" href="#">LinkedIn</a></div></div></div>
 </footer>
 
-<script>
+<!-- Tally Embed Script -->
+<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ─── LOAD ALL DATA ────────────────────────────────────────────
 // Fetches settings.json + all individual listing files from listings/ folder
 // The CMS index file lists available listings
@@ -621,10 +622,4 @@ const statObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(!e.isInt
 document.querySelectorAll('.stat-num[data-target]').forEach(el=>statObs.observe(el));
 
 // ─── SUBSCRIBE ───────────────────────────────────────────────
-function handleSubscribe(e){e.preventDefault();const msg=document.getElementById('subscribe-msg');msg.textContent="✓ You're on the list. We'll be in touch with exclusive listings soon.";msg.style.opacity='1';e.target.reset();setTimeout(()=>{msg.style.opacity='0';},5000);}
-
-// ─── BOOT ────────────────────────────────────────────────────
-loadData();
-</script>
-</body>
-</html>
+function handleSubscribe(e){e.preventDefault();const msg=document.getElementById('subscribe-msg');msg.textContent="✓ You're on the list. We'll be in touch with exclusive listings soon.";msg.style.opacity='1';e.target.re
