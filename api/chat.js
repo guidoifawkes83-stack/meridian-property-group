@@ -50,11 +50,9 @@ YOUR BOUNDARIES:
     const data = await response.json();
     const replyText = data.content[0].text;
 
-    // Debug logs
     console.log('Reply text:', replyText);
     console.log('Has LEAD_CAPTURED:', replyText.includes('LEAD_CAPTURED::'));
 
-    // Check if Sarah has collected all lead details
     if (replyText.includes('LEAD_CAPTURED::')) {
       try {
         const match = replyText.match(/LEAD_CAPTURED::([\s\S]*?\})/);
@@ -64,7 +62,6 @@ YOUR BOUNDARIES:
           const lead = JSON.parse(match[1]);
           console.log('Lead data:', lead);
 
-          // Push to HubSpot
           const hubspotResponse = await fetch('https://api.hubapi.com/crm/v3/objects/contacts', {
             method: 'POST',
             headers: {
@@ -76,9 +73,7 @@ YOUR BOUNDARIES:
                 firstname: lead.firstname,
                 email: lead.email,
                 hs_lead_status: 'NEW',
-                intent_level: lead.intent === 'buying' ? 'HIGH' : 'MEDIUM',
-                suburb_of_interest: lead.suburb,
-                lead_source: 'Website Chat Widget'
+                lead_source_detail: 'Website Chat Widget'
               }
             })
           });
@@ -86,7 +81,6 @@ YOUR BOUNDARIES:
           const hubspotData = await hubspotResponse.json();
           console.log('HubSpot response:', JSON.stringify(hubspotData));
 
-          // Clean the reply before sending to user
           data.content[0].text = replyText.replace(/LEAD_CAPTURED::.*$/s, '').trim();
         }
       } catch (hubspotError) {
