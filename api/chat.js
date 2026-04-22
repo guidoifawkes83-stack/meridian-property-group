@@ -73,7 +73,7 @@ YOUR BOUNDARIES:
                 firstname: lead.firstname,
                 email: lead.email,
                 hs_lead_status: 'NEW',
-                lead_source_detail: 'Website Chat Widget'
+                lead_source_detail: 'Website'
               }
             })
           });
