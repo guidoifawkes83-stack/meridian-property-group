@@ -53,7 +53,7 @@ YOUR BOUNDARIES:
     // Check if Sarah has collected all lead details
     if (replyText.includes('LEAD_CAPTURED::')) {
       try {
-        const match = replyText.match(/LEAD_CAPTURED::(\{.*?\})/);
+        const match = replyText.match(/LEAD_CAPTURED::(\{[\s\S]*?\})/);
         if (match) {
           const lead = JSON.parse(match[1]);
 
