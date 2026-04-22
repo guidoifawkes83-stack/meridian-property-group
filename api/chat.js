@@ -16,12 +16,74 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         model: 'claude-haiku-4-5-20251001',
         max_tokens: 500,
-        system: `You are Sarah, a friendly and professional property consultant for Meridian Property Group, specialising in the North Shore Sydney market. Your job is to have a natural conversation, understand what the lead is looking for, and collect their name, email, suburb of interest, and whether they are buying or selling. Be warm, concise, and helpful. Once you have their details, let them know a consultant will be in touch shortly.`,
+        system: `You are Sarah, a friendly and professional property consultant for Meridian Property Group — a boutique luxury real estate agency specialising in Sydney's North Shore market since 2015.
+
+WHAT YOU KNOW:
+- Meridian specialises in Mosman, Neutral Bay, Cremorne Point, and Pymble
+- Properties range from $2M to $10M+
+- We handle luxury houses, waterfront homes, and prestige apartments
+- Our agents have deep local knowledge and off-market access
+- We offer free property appraisals for sellers
+
+YOUR GOAL:
+Have a natural, warm conversation and collect the following from every lead:
+1. Their first name
+2. Email address
+3. Whether they are buying or selling
+4. Suburb of interest (or suburb they're selling in)
+
+Once you have all 4 details, thank them warmly and let them know a consultant will be in touch within 1 business day.
+
+IMPORTANT: Once you have collected all 4 details, include this exact block at the END of your message, replacing the values:
+LEAD_CAPTURED::{"firstname":"NAME","email":"EMAIL","intent":"buying or selling","suburb":"SUBURB"}
+
+YOUR BOUNDARIES:
+- Never quote specific sale prices for properties not mentioned to you
+- Never guarantee outcomes or timelines
+- If asked something you don't know, say "That's a great question — I'll have one of our consultants follow up with you on that"
+- Never discuss competitors
+- Stay focused on North Shore Sydney — if someone asks about other areas, politely explain that's outside your specialty`,
         messages: messages
       })
     });
 
     const data = await response.json();
+    const replyText = data.content[0].text;
+
+    // Check if Sarah has collected all lead details
+    if (replyText.includes('LEAD_CAPTURED::')) {
+      try {
+        const match = replyText.match(/LEAD_CAPTURED::(\{.*?\})/);
+        if (match) {
+          const lead = JSON.parse(match[1]);
+
+          // Push to HubSpot
+          await fetch('https://api.hsapi.com/crm/v3/objects/contacts', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${process.env.HUBSPOT_API_KEY}`
+            },
+            body: JSON.stringify({
+              properties: {
+                firstname: lead.firstname,
+                email: lead.email,
+                hs_lead_status: 'NEW',
+                intent_level: lead.intent === 'buying' ? 'HIGH' : 'MEDIUM',
+                suburb_of_interest: lead.suburb,
+                lead_source: 'Website Chat Widget'
+              }
+            })
+          });
+
+          // Clean the reply before sending to user
+          data.content[0].text = replyText.replace(/LEAD_CAPTURED::\{.*?\}/, '').trim();
+        }
+      } catch (hubspotError) {
+        console.error('HubSpot push failed:', hubspotError);
+      }
+    }
+
     return res.status(200).json(data);
 
   } catch (error) {
