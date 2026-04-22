@@ -58,7 +58,7 @@ YOUR BOUNDARIES:
           const lead = JSON.parse(match[1]);
 
           // Push to HubSpot
-          await fetch('https://api.hsapi.com/crm/v3/objects/contacts', {
+          await fetch('https://api.hubapi.com/crm/v3/objects/contacts', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
