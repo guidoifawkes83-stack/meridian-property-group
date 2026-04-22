@@ -34,7 +34,7 @@ Have a natural, warm conversation and collect the following from every lead:
 
 Once you have all 4 details, thank them warmly and let them know a consultant will be in touch within 1 business day.
 
-IMPORTANT: Once you have collected all 4 details, include this exact block at the END of your message, replacing the values:
+IMPORTANT: Once you have collected all 4 details, you MUST include this exact block at the very end of your message on a new line, with no extra spaces or line breaks inside the JSON:
 LEAD_CAPTURED::{"firstname":"NAME","email":"EMAIL","intent":"buying or selling","suburb":"SUBURB"}
 
 YOUR BOUNDARIES:
@@ -50,15 +50,22 @@ YOUR BOUNDARIES:
     const data = await response.json();
     const replyText = data.content[0].text;
 
+    // Debug logs
+    console.log('Reply text:', replyText);
+    console.log('Has LEAD_CAPTURED:', replyText.includes('LEAD_CAPTURED::'));
+
     // Check if Sarah has collected all lead details
     if (replyText.includes('LEAD_CAPTURED::')) {
       try {
-        const match = replyText.match(/LEAD_CAPTURED::(\{[\s\S]*?\})/);
+        const match = replyText.match(/LEAD_CAPTURED::([\s\S]*?\})/);
+        console.log('Match result:', match);
+
         if (match) {
           const lead = JSON.parse(match[1]);
+          console.log('Lead data:', lead);
 
           // Push to HubSpot
-          await fetch('https://api.hubapi.com/crm/v3/objects/contacts', {
+          const hubspotResponse = await fetch('https://api.hubapi.com/crm/v3/objects/contacts', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -76,8 +83,11 @@ YOUR BOUNDARIES:
             })
           });
 
+          const hubspotData = await hubspotResponse.json();
+          console.log('HubSpot response:', JSON.stringify(hubspotData));
+
           // Clean the reply before sending to user
-          data.content[0].text = replyText.replace(/LEAD_CAPTURED::\{.*?\}/, '').trim();
+          data.content[0].text = replyText.replace(/LEAD_CAPTURED::.*$/s, '').trim();
         }
       } catch (hubspotError) {
         console.error('HubSpot push failed:', hubspotError);
@@ -87,6 +97,7 @@ YOUR BOUNDARIES:
     return res.status(200).json(data);
 
   } catch (error) {
+    console.error('Function error:', error);
     return res.status(500).json({ error: 'Something went wrong' });
   }
 }
